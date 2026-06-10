@@ -298,7 +298,8 @@
   + Multiplication distributes over addition:\
     for all $a, b, c in F$, $a dot (b + c) = a dot b + a dot c$.
 
-  #examples[$QQ, RR, CC, RR(x), QQ(i), FF_p$
+  #examples[
+    $QQ, RR, CC, RR(x), QQ(i), FF_p$
     if $p$ is prime.
   ]
 ]
