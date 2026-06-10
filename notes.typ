@@ -34,7 +34,10 @@
   A _symmetry_ of an object $O subset.eq X$ in a metric space $(X, d)$ is
   an isometry $f : X -> X$ with the image $f(O) = O$.
 
-  Informally, a symmetry of a geometric object is a rearrangment of the object preserving the arrangement of its sides and vertices as well as its distances and angles.
+  Informally, a symmetry of a geometric object is
+  a rearrangment of the object preserving
+  the arrangement of its sides and vertices
+  as well as its distances and angles.
 ]
 
 #examples[
@@ -109,7 +112,8 @@
   Let $X$ be some mathematical object.
   A map $phi : X -> X$ is an _endomorphism_.
   Should $phi$ simultaneously be bijective
-  it is moreover an _automorphism_ and, if $X$ is a set, a _permutation_.
+  it is moreover an _automorphism_ and,
+  if $X$ is a set, a _permutation_.
   The most trivial automorphism is the _the identity map_ $id_X$ with
   $ id_X (x) = x wide forall x in X. $
 ]
@@ -305,18 +309,28 @@
   - Scalar multiplication $dot : F times V -> V$
 
   These must satisfy
-  + (Closure under addition) $ve(u) + ve(v) in V$
-  + (Distributivity over vectors) $a (ve(u) + ve(v)) = a ve(u) + a ve(v)$
-  + (Associativity) $ve(u) + (ve(v) + ve(w)) = (ve(u) + ve(v)) + ve(w)$
-  + (Identity) $ve(u) + ve(0) = ve(u)$
+  + (Closure under addition)
+    $ve(u) + ve(v) in V$
+  + (Distributivity over vectors)
+    $a (ve(u) + ve(v)) = a ve(u) + a ve(v)$
+  + (Associativity)
+    $ve(u) + (ve(v) + ve(w)) = (ve(u) + ve(v)) + ve(w)$
+  + (Identity)
+    $ve(u) + ve(0) = ve(u)$
     \ \
-  + (Inverse) $ve(u) + (-ve(u)) = ve(0)$
-  + (Commutativity) $ve(u) + ve(v) = ve(v) + ve(u)$
+  + (Inverse)
+    $ve(u) + (-ve(u)) = ve(0)$
+  + (Commutativity)
+    $ve(u) + ve(v) = ve(v) + ve(u)$
     \ \
-  + (Closure under scalar multiplication) $a ve(u) in V$
-  + (Distributivity over scalars) $(a + b) ve(u) = a ve(u) + b ve(u)$
-  + (Associativity) $a (b ve(u)) = (a b) ve(u)$
-  + (Identity) $1 ve(u) = ve(u)$
+  + (Closure under scalar multiplication)
+    $a ve(u) in V$
+  + (Distributivity over scalars)
+    $(a + b) ve(u) = a ve(u) + b ve(u)$
+  + (Associativity)
+    $a (b ve(u)) = (a b) ve(u)$
+  + (Identity)
+    $1 ve(u) = ve(u)$
 
   Note that requiring closure is often omitted.
 ]
