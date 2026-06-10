@@ -23,19 +23,65 @@
   memes: true,
 )
 
+#definition[Isometry][
+  Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces.
+  A map $f : X -> Y$ is an _isometry_ if
+  it perserves distances, that is,
+  $ d_X (x_1, x_2) = d_Y (f(x_1), f(x_2)) quad forall x_1, x_2 in X. $
+]
+
+#definition[Symmetry][
+  A _symmetry_ of an object $O subset.eq X$ in a metric space $(X, d)$ is
+  an isometry $f : X -> X$ with the image $f(O) = O$.
+
+  Informally, a symmetry of a geometric object is a rearrangment of the object preserving the arrangement of its sides and vertices as well as its distances and angles.
+]
+
+#examples[
+  Some types of symmetries:
+
+  + / Reflectional:
+      Reflection across a hyperplane
+      (a line in $RR^2$ or a plane in $RR^3$)
+  + / Rotational:
+      Rotation within a plane
+      ($RR^2$ is rotated around a fixed point, while
+      $RR^3$ is rotated around an axis).
+  + / Translational:
+      All points are shifted by a constant vector.
+  + / Identity:
+      No change.
+]
+
+// Im unsure of the following
+#definition[Rigid Motion][
+  A _rigid motion_ is a map $f : RR^n -> RR^n$ such that
+  $ norm(u - v) = norm(f(u) - f(v)) quad forall u, v in RR^n. $
+
+  Equivalently, it is a surjective isometry between Euclidean spaces
+]
+
+#example[
+  A symmetry of an object in an Euclidean space $X = RR^n$
+  is also a rigid motion.
+]
+
 = Sets
 
-#definition(title: [Tuple])[
+=== Set theory
+
+#definition[Tuple][
   A tuple (or sometimes _list_) is
   a finite, ordered collection of elements,
   possibly with repetitions.
 
-  An $n$-tuple is a tuple of length $n$.
+  An $n$-tuple is of length $n$.
+  A $2$-tuple is called an _ordered pair_.
 ]
 
 === Morphisms
 
-#definition(title: [Map])[
+#definition[Map][
   Subsets of the Cartesian product $A times B$ are called _relations_.
   A _map_ is a _well-defined_ relation written
   $
@@ -59,7 +105,7 @@
     which is equivalent to being _invertible_.
 ]
 
-#definition(title: [Endomorphism])[
+#definition[Endomorphism][
   Let $X$ be some mathematical object.
   A map $phi : X -> X$ is an _endomorphism_.
   Should $phi$ simultaneously be bijective
@@ -68,7 +114,7 @@
   $ id_X (x) = x wide forall x in X. $
 ]
 
-#definition(title: [Homomorphism])[
+#definition[Homomorphism][
   A _homomorphism_ is a map between algebraic structures
   that preserves the structure.
 
@@ -78,7 +124,7 @@
 ]
 
 // Beware! Im unsure about this
-#definition(title: [Isomorphism])[
+#definition[Isomorphism][
   A map $T : V -> W$ is an _isomorphism_ if it is
   + bijective and linear or, equivalently,
   + invertible.
@@ -90,7 +136,7 @@
   If $V = W$, then $T$ is an _automorphism_.
 ]
 
-#definition(title: [Kernel])[
+#definition[Kernel][
   Let $T : V -> W$ be a linear map.
   The _kernel_ of $T$ is
   $ ker(T) = {v in V | T(v) = 0}. $
@@ -100,7 +146,7 @@
 
 === Equivalance
 
-#definition(title: [Equivalance Relation])[
+#definition[Equivalance Relation][
   An _equivalance relation_ on a set $A$
   is a relation $R subset.eq A times A$
   with the following properties:
@@ -111,13 +157,13 @@
   If $(x, y) in R$ we write $x tilde y$.
 ]
 
-#definition(title: [Partition])[
+#definition[Partition][
   A _partition_ $cal(P)$ of a set $A$
   is a collection of non-empty, disjoint subsets of $A$
   whose union is $A$.
 ]
 
-#definition(title: [Equivalence Class])[
+#definition[Equivalence Class][
   Let $R$ be an equivalence relation on a set $A$.
   The _equivalence class_ of $a in A$ is
   $ [a] = {b in A | b tilde a}. $
@@ -128,7 +174,7 @@
   The equivalence classes form a partition of $A$.
 ]
 
-#definition(title: [Quotient Map])[
+#definition[Quotient Map][
   Let $R$ be an equivalence relation on $A$.
   The map $pi : A -> A slash.double R$ defined by
   $ pi(a) = [a] $
@@ -139,7 +185,7 @@
 
 === Transpositions
 
-#definition(title: [Transposition])[
+#definition[Transposition][
   A transposition of the elements $i, j in {1, ..., n}$
   is the permutation $tau_(i j)$ with the cyclic notation $(i j)$.
 ]
@@ -149,7 +195,7 @@
   a composition of transpositions.
 ]
 
-#definition(title: [Sign of a Permutation])[
+#definition[Sign of a Permutation][
   Let $k$ be the
   number of transpositions in
   any decomposition of a permutation $sigma in S_n$.
@@ -161,7 +207,7 @@
     and $sigma$ is said to be odd.
 ]
 
-#definition(title: [Fixed Point])[
+#definition[Fixed Point][
   A fixed point is invariant under
   a transformation such as a permutation.
 ]
@@ -170,8 +216,8 @@
 
 === Definition
 
-#definition(title: [Group])[
-  A _group_ is a set $G$ with
+#definition[Group][
+  A _group_ $(G, *)$ is a set $G$ with
   a binary operation $* : G times G -> G$
   such that for all $a, b, c in G$, it satisfies
   1. (Closure) $a * b in G$
@@ -179,7 +225,7 @@
   3. (Identity) $exists e in G : e * a = a * e = a$
   4. (Inverse) $exists a^(-1) in G : a * a^(-1) = a^(-1) * a = e$
 
-  Additionally, a group is said to be _abelian_ or _commutative_ if
+  Additionally, a group is said to be _abelian_ or _commutative_ if it is
   5. (Commutative) $a * b = b * a$
 ]
 
@@ -192,7 +238,7 @@
   _abelian_ is usually not capitalized.
 ]
 
-#definition(title: [Subgroup])[
+#definition[Subgroup][
   Let $(G, *)$ be a group.
   A subset $H subset.eq G$ is a _subgroup_ if it is itself a group
   under the operation inherited from $G$.
@@ -205,13 +251,13 @@
 
 === Symmetric Groups
 
-#definition(title: [Symmetric Group])[
+#definition[Symmetric Group][
   The _symmetric group_ of a set $X$ with $n$ elements is
   $ S_n = {sigma : X -> X | sigma "is bijective"} $
   and has $n!$ elements.
 ]
 
-#definition(title: [Symmetric Group, Permutations])[
+#definition[Symmetric Group, Permutations][
   The _symmetric group_ $S_n$ is
   the group of all permutations on $n$ elements
   under the operation of composition.
@@ -219,7 +265,7 @@
 
 === Alternating Groups
 
-#definition(title: [Alternating Group])[
+#definition[Alternating Group][
   The _alternating group_
   $ A_n = {sigma in S_n | "sgn"(sigma) = 1} $
   is the subgroup of $S_n$ consisting of all even permutations.
@@ -234,9 +280,13 @@
   $ ker("sgn") = A_n. $
 ]
 
+#theorem[bruh][
+  bruh
+]
+
 = Fields
 
-#definition(title: [Field])[
+#definition[Field][
   A _field_ is a set $F$
   with two binary operations $+$ and $dot$ such that
   + $(F, +)$ is an abelian group with identity $0$.
@@ -249,7 +299,7 @@
   ]
 ]
 
-#definition(title: [Vector Space])[
+#definition[Vector Space][
   A vector space over a field $F$ is a set $V$ with two operations:
   - Vector addition $+ : V times V -> V$
   - Scalar multiplication $dot : F times V -> V$
