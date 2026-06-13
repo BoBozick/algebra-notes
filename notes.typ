@@ -23,6 +23,11 @@
   memes: true,
 )
 
+#definition[
+  The _integers modulo $m$_ is a set of equivalence classes
+  $ ZZ_m = {[0], [1], ..., [m - 1]} $
+]
+
 === Cosets
 
 #definition[Coset][
