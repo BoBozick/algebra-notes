@@ -24,7 +24,7 @@
 )
 
 #definition[
-  The _integers modulo $m$_ is a set of equivalence classes
+  The *integers modulo $m$* is a set of equivalence classes
   $ ZZ_m = {[0], [1], ..., [m - 1]} $
 ]
 
@@ -32,10 +32,10 @@
 
 #definition[Coset][
   Let $H subset.eq G$ be a subgroup of a group $G$.
-  For any $g in G$, the _left coset_ of $H$ in $G$ is
+  For any $g in G$, the *left coset* of $H$ in $G$ is
   $ g H = {g * h | h in H}. $
 
-  Similarly, the _right coset_ is
+  Similarly, the *right coset* is
   $ H g = {h * g | h in H}. $
 ]
 
@@ -57,7 +57,7 @@
 
 #definition[Isometry][
   Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces.
-  A map $f : X -> Y$ is an _isometry_ if
+  A map $f : X -> Y$ is an *isometry* if
   it perserves distances, that is,
   $ d_X (x_1, x_2) = d_Y (f(x_1), f(x_2)) quad forall x_1, x_2 in X. $
 ]
@@ -124,7 +124,7 @@
 
 #definition[Map][
   Subsets of the Cartesian product $A times B$ are called _relations_.
-  A _map_ is a _well-defined_ relation written
+  A *map* is a *well-defined*  relation written
   $
     f subset.eq A times B
     quad "or" quad
@@ -133,15 +133,15 @@
     A ->^f B
   $
   and is
-  - _surjective_ or _onto_
+  - *surjective* or *onto* 
     if $f(A) = B$,
     which is equivalent to being _right invertible_
     with $f compose f^(-1) = id_B$.
-  - _injective_ or _one-to-one_
+  - *injective* or *one-to-one* 
     if $a_1 != a_2 ==> f(a_1) != f(a_2)$,
     which is equivalent to being _left invertible_
     with $f^(-1) compose f = id_A$.
-  - _bijective_ or a _one-to-one correspondence_
+  - *bijective* or a *one-to-one correspondence* 
     if both above apply,
     which is equivalent to being _invertible_.
 ]
@@ -224,7 +224,7 @@
   3. (Identity) $exists e in G : e * a = a * e = a$
   4. (Inverse) $exists a^(-1) in G : a * a^(-1) = a^(-1) * a = e$
 
-  Additionally, a group is said to be _abelian_ or _commutative_ if it is
+  Additionally, a group is said to be *abelian* or *commutative*  if it is
   5. (Commutative) $a * b = b * a$
 ]
 
