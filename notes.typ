@@ -23,6 +23,33 @@
   memes: true,
 )
 
+=== Cosets
+
+#definition[Coset][
+  Let $H subset.eq G$ be a subgroup of a group $G$.
+  For any $g in G$, the _left coset_ of $H$ in $G$ is
+  $ g H = {g * h | h in H}. $
+
+  Similarly, the _right coset_ is
+  $ H g = {h * g | h in H}. $
+]
+
+#theorem[Lagrange's][
+  Let $G$ be a finite group and $H subset.eq G$ a subgroup.
+  Then the order of $H$ divides the order of $G$.
+]
+
+#corollary[
+  If $G$ is of prime order, it has no nontrivial subgroups.
+]
+
+#theorem[Lagrange's, Generalized][
+  Regardless of whether G is finite or infinite,
+  $ car(G) = car(G : H) car(H). $
+]
+
+=== Symmetry
+
 #definition[Isometry][
   Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces.
   A map $f : X -> Y$ is an _isometry_ if
@@ -67,6 +94,12 @@
 #example[
   A symmetry of an object in an Euclidean space $X = RR^n$
   is also a rigid motion.
+]
+
+#definition[Dihedral Group][
+  The _dihedral group_ $D_n$ is
+  the group of symmetries (or equivalently rigid motions) of an $n$-gon.
+  Its degree is $n$ and its order is $2n$.
 ]
 
 = Sets
@@ -127,27 +160,13 @@
   for all $a, b in G$.
 ]
 
-// Beware! Im unsure about this
 #definition[Isomorphism][
-  A map $T : V -> W$ is an _isomorphism_ if it is
-  + bijective and linear or, equivalently,
-  + invertible.
+  An _isomorphism_ is a bijective homomorphism.
 
-  If such a map exists, the spaces are _isomorphic_,
-  written $V tilde.equiv W$.
-  Then the spaces differ only in their respective choice of basis.
-
-  If $V = W$, then $T$ is an _automorphism_.
+  If there exists an isomorphism between two algebraic structures,
+  they are said to be _isomorphic_.
 ]
-
-#definition[Kernel][
-  Let $T : V -> W$ be a linear map.
-  The _kernel_ of $T$ is
-  $ ker(T) = {v in V | T(v) = 0}. $
-
-  The kernel is a subspace of $V$.
-]
-
+  
 === Equivalance
 
 #definition[Equivalance Relation][
@@ -187,42 +206,13 @@
   It is always surjective.
 ]
 
-=== Transpositions
-
-#definition[Transposition][
-  A transposition of the elements $i, j in {1, ..., n}$
-  is the permutation $tau_(i j)$ with the cyclic notation $(i j)$.
-]
-
-#theorem[
-  A permutation $sigma in S_n$ can be written as
-  a composition of transpositions.
-]
-
-#definition[Sign of a Permutation][
-  Let $k$ be the
-  number of transpositions in
-  any decomposition of a permutation $sigma in S_n$.
-  The _sign_ of $sigma$ is $(-1)^k$.
-  Hence,
-  - if $k$ is _even_ then $sgn(sigma) = +1$
-    and $sigma$ is said to be even.
-  - if $k$ is _odd_ then $sgn(sigma) = -1$
-    and $sigma$ is said to be odd.
-]
-
-#definition[Fixed Point][
-  A fixed point is invariant under
-  a transformation such as a permutation.
-]
-
 = Groups
 
 === Definition
 
 #definition[Group][
-  A _group_ $(G, *)$ is a set $G$ with
-  a binary operation $* : G times G -> G$
+  A _group_ $(G, *)$ is a nonempty set $G$ with a binary operation
+  $ * : G times G -> G $
   such that for all $a, b, c in G$, it satisfies
   1. (Closure) $a * b in G$
   2. (Associativity) $(a * b) * c = a * (b * c)$
@@ -242,32 +232,80 @@
   _abelian_ is usually not capitalized.
 ]
 
+=== Subgroups
+
+Let $(G, *)$ be a group.
+
 #definition[Subgroup][
-  Let $(G, *)$ be a group.
   A subset $H subset.eq G$ is a _subgroup_ if it is itself a group
   under the operation inherited from $G$.
-
-  A common test is: $H$ is non-empty and
-  for all $a, b in H$, the element $a * b^(-1)$ also lies in $H$.
 ]
 
-== Permutation Groups
+#tip[
+  It follows that $H$ is a subgroup if
+  + $H != emptyset$
+  + $a * b^(-1) in H quad forall a, b in H$
+]
+
+#definition[Cyclical Subgroup][
+  For all $a in G$, the set
+  $ chevrons(a) = {a^k | k in ZZ} $
+  with the operation $*$ is a _cyclical subgroup_ of $(G, *)$.
+]
+
+#definition[Cyclical Group][
+  We say $(G, *)$ is a _cyclical group_ if $exists a in G : chevrons(a) = G$.
+]
+
+== Permutations
+
+=== Transpositions
+
+#definition[Transposition][
+  A transposition of the elements $i, j in {1, ..., n}$
+  is the permutation $tau_(i j)$ with the cyclic notation $(i j)$.
+]
+
+#theorem[
+  A permutation $sigma in S_n$ can be written as
+  a composition of transpositions.
+]
+
+#theorem[
+  The identity $id in S_n$ may only be written as
+  an even number of transpositions.
+]
+
+#definition[Sign of a Permutation][
+  Let $k$ be the
+  number of transpositions in
+  any decomposition of a permutation $sigma in S_n$.
+  The _sign_ of $sigma$ is $(-1)^k$.
+  Hence,
+  - if $k$ is _even_ then $sgn(sigma) = +1$
+    and $sigma$ is said to be even.
+  - if $k$ is _odd_ then $sgn(sigma) = -1$
+    and $sigma$ is said to be odd.
+]
+
+#definition[Fixed Point][
+  A fixed point is invariant under
+  a transformation such as a permutation.
+]
 
 === Symmetric Groups
 
 #definition[Symmetric Group][
-  The _symmetric group_ of a set $X$ with $n$ elements is
+  The _symmetric group_ of the finite set $X = {1, 2, ..., n}$ is
   $ S_n = {sigma : X -> X | sigma "is bijective"} $
-  and has $n!$ elements.
+  and consists of $n!$ permutations,
+  which form a group under the operation of composition
+  called _the symmetric group on n letters_.
 ]
 
-#definition[Symmetric Group, Permutations][
-  The _symmetric group_ $S_n$ is
-  the group of all permutations on $n$ elements
-  under the operation of composition.
+#definition[Permutation Group][
+  A subgroup of a symmetric group $S_n$ is a _permutation group_.
 ]
-
-=== Alternating Groups
 
 #definition[Alternating Group][
   The _alternating group_
@@ -282,10 +320,6 @@
 
   The kernel of this homomorphism is the alternating group
   $ ker("sgn") = A_n. $
-]
-
-#theorem[bruh][
-  bruh
 ]
 
 = Fields
