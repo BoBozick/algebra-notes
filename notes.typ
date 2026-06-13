@@ -28,19 +28,19 @@
 === Set theory
 
 #definition[Tuple][
-  A tuple (or sometimes _list_) is
+  A tuple (or sometimes *list*) is
   a finite, ordered collection of elements,
   possibly with repetitions.
 
   An $n$-tuple is of length $n$.
-  A $2$-tuple is called an _ordered pair_.
+  A $2$-tuple is called an *ordered pair*.
 ]
 
 === Morphisms
 
 #definition[Map][
-  Subsets of the Cartesian product $A times B$ are called _relations_.
-  A *map* is a *well-defined*  relation written
+  Subsets of the Cartesian product $A times B$ are called *relations*.
+  A *map* is a *well-defined* relation written
   $
     f subset.eq A times B
     quad "or" quad
@@ -51,23 +51,23 @@
   and is
   - *surjective* or *onto* 
     if $f(A) = B$,
-    which is equivalent to being _right invertible_
+    which is equivalent to being *right invertible*
     with $f compose f^(-1) = id_B$.
   - *injective* or *one-to-one* 
     if $a_1 != a_2 ==> f(a_1) != f(a_2)$,
-    which is equivalent to being _left invertible_
+    which is equivalent to being *left invertible*
     with $f^(-1) compose f = id_A$.
   - *bijective* or a *one-to-one correspondence* 
     if both above apply,
-    which is equivalent to being _invertible_.
+    which is equivalent to being *invertible*.
 ]
 
 #definition[Endomorphism][
   Let $X$ be some mathematical object.
-  A map $phi : X -> X$ is an _endomorphism_.
+  A map $phi : X -> X$ is an *endomorphism*.
   Should $phi$ simultaneously be bijective
   it is moreover an *automorphism* and,
-  if $X$ is a set, a _permutation_.
+  if $X$ is a set, a *permutation*.
   The most trivial automorphism is the *the identity map* $id_X$ with
   $ id_X (x) = x wide forall x in X. $
 ]
@@ -85,7 +85,7 @@
   An *isomorphism* is a bijective homomorphism.
 
   If there exists an isomorphism between two algebraic structures,
-  they are said to be _isomorphic_.
+  they are said to be *isomorphic*.
 ]
   
 === Equivalance
@@ -113,7 +113,7 @@
   $ [a] = {b in A | b tilde a}. $
 
   The set of all equivalence classes is written
-  $ A slash.double R $ and is called the _quotient set_.
+  $ A slash.double R $ and is called the *quotient set*.
 
   The equivalence classes form a partition of $A$.
 ]
@@ -122,7 +122,7 @@
   Let $R$ be an equivalence relation on $A$.
   The map $pi : A -> A slash.double R$ defined by
   $ pi(a) = [a] $
-  is called the _quotient map_.
+  is called the *quotient map*.
 
   It is always surjective.
 ]
@@ -145,7 +145,7 @@
   3. (Identity) $exists e in G : e * a = a * e = a$
   4. (Inverse) $exists a^(-1) in G : a * a^(-1) = a^(-1) * a = e$
 
-  Additionally, a group is said to be *abelian* or *commutative*  if it is
+  Additionally, a group is said to be *abelian* or *commutative* if it is
   5. (Commutative) $a * b = b * a$
 ]
 
@@ -251,15 +251,15 @@ Let $(G, *)$ be a group.
   $ S_n = {sigma : X -> X | sigma "is bijective"} $
   and consists of $n!$ permutations,
   which form a group under the operation of composition
-  called _the symmetric group on n letters_.
+  called *the symmetric group on n letters*.
 ]
 
 #definition[Permutation Group][
-  A subgroup of a symmetric group $S_n$ is a _permutation group_.
+  A subgroup of a symmetric group $S_n$ is a *permutation group*.
 ]
 
 #definition[Alternating Group][
-  The _alternating group_
+  The *alternating group*
   $ A_n = {sigma in S_n | "sgn"(sigma) = 1} $
   is the subgroup of $S_n$ consisting of all even permutations.
 
