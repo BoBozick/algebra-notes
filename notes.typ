@@ -62,30 +62,44 @@
     which is equivalent to being *invertible*.
 ]
 
-#definition[Endomorphism][
-  Let $X$ be some mathematical object.
-  A map $phi : X -> X$ is an *endomorphism*.
-  Should $phi$ simultaneously be bijective
-  it is moreover an *automorphism* and,
-  if $X$ is a set, a *permutation*.
-  The most trivial automorphism is the *the identity map* $id_X$ with
-  $ id_X (x) = x wide forall x in X. $
-]
-
 #definition[Homomorphism][
   A *homomorphism* is a map between algebraic structures
   that preserves the structure.
 
-  For example, a group homomorphism $f : G -> H$ satisfies
-  $ f(a * b) = f(a) * f(b) $
-  for all $a, b in G$.
+  A group homomorphism $phi : G -> H$ satisfies
+  $ phi(g * gamma) = phi(g) dot phi(gamma) $
+  for all $g, gamma in G$.
+]
+
+#theorem[
+  If $phi : G -> H$ is a group homomorphism,
+  + $phi(id_G) = id_H$
+  + $phi(g^(-1)) = phi(g)^(-1)$ for all $g in G$
 ]
 
 #definition[Isomorphism][
   An *isomorphism* is a bijective homomorphism.
 
   If there exists an isomorphism between two algebraic structures,
-  they are said to be *isomorphic*.
+  they are said to be *isomorphic*, denoted with $tilde.equiv$.
+]
+
+#definition[Endomorphism][
+  An *endomorphism* is a homomorphism from a mathematical object to itself.
+]
+
+#definition[Automorphism][
+  An *automorphism* is simultaneously an isomorphism and an endomorphism:
+  a bijective homomorphism from an object to itself.
+]
+
+#example[
+  The *identity map* $id_X$ is a trivial automorphism defined
+  $ id_X (x) = x wide forall x in X. $
+]
+
+#example[
+  An automorphism of a set is called a *permutation*.
 ]
   
 === Equivalance
@@ -145,7 +159,7 @@
   3. (Identity) $exists e in G : e * a = a * e = a$
   4. (Inverse) $exists a^(-1) in G : a * a^(-1) = a^(-1) * a = e$
 
-  Additionally, a group is said to be *abelian* or *commutative* if it is
+  Additionally, a group is called *abelian* or *commutative* if it is
   5. (Commutative) $a * b = b * a$
 ]
 
@@ -185,8 +199,9 @@ Let $(G, *)$ be a group.
 
 == Cosets
 
+Let $H subset.eq G$ be a subgroup of a group $G$.
+
 #definition[Coset][
-  Let $H subset.eq G$ be a subgroup of a group $G$.
   For any $g in G$, the *left coset* of $H$ in $G$ is
   $ g H = {g * h | h in H}. $
 
@@ -194,8 +209,21 @@ Let $(G, *)$ be a group.
   $ H g = {h * g | h in H}. $
 ]
 
+#theorem[
+  The left and right cosets respectively partition $G$.
+]
+
+#theorem[
+  There are equally many left and right cosets of $H$ in $G$.
+]
+
+#definition[Index][
+  The *index* of $H$ in $G$ is the number of left cosets, denoted
+  $[G : H].$
+]
+
 #theorem[Lagrange's][
-  Let $G$ be a finite group and $H subset.eq G$ a subgroup.
+  Let $G$ be finite.
   Then the order of $H$ divides the order of $G$.
 ]
 
@@ -206,6 +234,14 @@ Let $(G, *)$ be a group.
 #theorem[Lagrange's, Generalized][
   Regardless of whether G is finite or infinite,
   $ car(G) = car(G : H) car(H). $
+]
+
+#theorem[Fermat's Little][
+  If $p$ is a prime number and $a$ is an integer, then
+  $ a^p equiv a quad (mod p). $
+
+  Moreover, if $a$ is coprime to $p$, that is $p divides.not a$, then
+  $ a^(p - 1) equiv 1 quad (mod p). $
 ]
 
 == Permutations
@@ -250,8 +286,12 @@ Let $(G, *)$ be a group.
   The *symmetric group* of the finite set $X = {1, 2, ..., n}$ is
   $ S_n = {sigma : X -> X | sigma "is bijective"} $
   and consists of $n!$ permutations,
-  which form a group under the operation of composition
-  called *the symmetric group on n letters*.
+  which form *the symmetric group on $n$ letters*
+  under the operation of composition
+]
+
+#theorem[
+  The automorphism group of a set is its symmetric group.
 ]
 
 #definition[Permutation Group][
@@ -336,11 +376,11 @@ Let $(G, *)$ be a group.
   + $(F\\{0}, dot)$ is an abelian group with identity $1$.
   + Multiplication distributes over addition:\
     for all $a, b, c in F$, $a dot (b + c) = a dot b + a dot c$.
+]
 
-  #examples[
-    $QQ, RR, CC, RR(x), QQ(i), FF_p$
-    if $p$ is prime.
-  ]
+
+#examples[
+  $QQ, RR, CC, RR(x), QQ(i),$ and $FF_p$ for prime $p$.
 ]
 
 #definition[Vector Space][
