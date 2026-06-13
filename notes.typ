@@ -63,7 +63,7 @@
 ]
 
 #definition[Symmetry][
-  A _symmetry_ of an object $O subset.eq X$ in a metric space $(X, d)$ is
+  A *symmetry* of an object $O subset.eq X$ in a metric space $(X, d)$ is
   an isometry $f : X -> X$ with the image $f(O) = O$.
 
   Informally, a symmetry of a geometric object is
@@ -90,7 +90,7 @@
 
 // Im unsure of the following
 #definition[Rigid Motion][
-  A _rigid motion_ is a map $f : RR^n -> RR^n$ such that
+  A *rigid motion* is a map $f : RR^n -> RR^n$ such that
   $ norm(u - v) = norm(f(u) - f(v)) quad forall u, v in RR^n. $
 
   Equivalently, it is a surjective isometry between Euclidean spaces
@@ -102,7 +102,7 @@
 ]
 
 #definition[Dihedral Group][
-  The _dihedral group_ $D_n$ is
+  The *dihedral group* $D_n$ is
   the group of symmetries (or equivalently rigid motions) of an $n$-gon.
   Its degree is $n$ and its order is $2n$.
 ]
@@ -150,14 +150,14 @@
   Let $X$ be some mathematical object.
   A map $phi : X -> X$ is an _endomorphism_.
   Should $phi$ simultaneously be bijective
-  it is moreover an _automorphism_ and,
+  it is moreover an *automorphism* and,
   if $X$ is a set, a _permutation_.
-  The most trivial automorphism is the _the identity map_ $id_X$ with
+  The most trivial automorphism is the *the identity map* $id_X$ with
   $ id_X (x) = x wide forall x in X. $
 ]
 
 #definition[Homomorphism][
-  A _homomorphism_ is a map between algebraic structures
+  A *homomorphism* is a map between algebraic structures
   that preserves the structure.
 
   For example, a group homomorphism $f : G -> H$ satisfies
@@ -166,7 +166,7 @@
 ]
 
 #definition[Isomorphism][
-  An _isomorphism_ is a bijective homomorphism.
+  An *isomorphism* is a bijective homomorphism.
 
   If there exists an isomorphism between two algebraic structures,
   they are said to be _isomorphic_.
@@ -175,7 +175,7 @@
 === Equivalance
 
 #definition[Equivalance Relation][
-  An _equivalance relation_ on a set $A$
+  An *equivalance relation* on a set $A$
   is a relation $R subset.eq A times A$
   with the following properties:
   + / reflexive: $(a, a) in R wide forall a in A$
@@ -186,14 +186,14 @@
 ]
 
 #definition[Partition][
-  A _partition_ $cal(P)$ of a set $A$
+  A *partition* $cal(P)$ of a set $A$
   is a collection of non-empty, disjoint subsets of $A$
   whose union is $A$.
 ]
 
 #definition[Equivalence Class][
   Let $R$ be an equivalence relation on a set $A$.
-  The _equivalence class_ of $a in A$ is
+  The *equivalence class* of $a in A$ is
   $ [a] = {b in A | b tilde a}. $
 
   The set of all equivalence classes is written
@@ -216,7 +216,7 @@
 === Definition
 
 #definition[Group][
-  A _group_ $(G, *)$ is a nonempty set $G$ with a binary operation
+  A *group* $(G, *)$ is a nonempty set $G$ with a binary operation
   $ * : G times G -> G $
   such that for all $a, b, c in G$, it satisfies
   1. (Closure) $a * b in G$
@@ -234,7 +234,7 @@
 
 #note[
   Defying conventional wisdom,
-  _abelian_ is usually not capitalized.
+  *abelian* is usually not capitalized.
 ]
 
 === Subgroups
@@ -242,7 +242,7 @@
 Let $(G, *)$ be a group.
 
 #definition[Subgroup][
-  A subset $H subset.eq G$ is a _subgroup_ if it is itself a group
+  A subset $H subset.eq G$ is a *subgroup* if it is itself a group
   under the operation inherited from $G$.
 ]
 
@@ -255,11 +255,11 @@ Let $(G, *)$ be a group.
 #definition[Cyclical Subgroup][
   For all $a in G$, the set
   $ chevrons(a) = {a^k | k in ZZ} $
-  with the operation $*$ is a _cyclical subgroup_ of $(G, *)$.
+  with the operation $*$ is a *cyclical subgroup* of $(G, *)$.
 ]
 
 #definition[Cyclical Group][
-  We say $(G, *)$ is a _cyclical group_ if $exists a in G : chevrons(a) = G$.
+  We say $(G, *)$ is a *cyclical group* if $exists a in G : chevrons(a) = G$.
 ]
 
 == Permutations
@@ -285,11 +285,11 @@ Let $(G, *)$ be a group.
   Let $k$ be the
   number of transpositions in
   any decomposition of a permutation $sigma in S_n$.
-  The _sign_ of $sigma$ is $(-1)^k$.
+  The *sign* of $sigma$ is $(-1)^k$.
   Hence,
-  - if $k$ is _even_ then $sgn(sigma) = +1$
+  - if $k$ is *even* then $sgn(sigma) = +1$
     and $sigma$ is said to be even.
-  - if $k$ is _odd_ then $sgn(sigma) = -1$
+  - if $k$ is *odd* then $sgn(sigma) = -1$
     and $sigma$ is said to be odd.
 ]
 
@@ -301,7 +301,7 @@ Let $(G, *)$ be a group.
 === Symmetric Groups
 
 #definition[Symmetric Group][
-  The _symmetric group_ of the finite set $X = {1, 2, ..., n}$ is
+  The *symmetric group* of the finite set $X = {1, 2, ..., n}$ is
   $ S_n = {sigma : X -> X | sigma "is bijective"} $
   and consists of $n!$ permutations,
   which form a group under the operation of composition
@@ -330,7 +330,7 @@ Let $(G, *)$ be a group.
 = Fields
 
 #definition[Field][
-  A _field_ is a set $F$
+  A *field* is a set $F$
   with two binary operations $+$ and $dot$ such that
   + $(F, +)$ is an abelian group with identity $0$.
   + $(F\\{0}, dot)$ is an abelian group with identity $1$.
