@@ -23,90 +23,6 @@
   memes: true,
 )
 
-#definition[
-  The *integers modulo $m$* is a set of equivalence classes
-  $ ZZ_m = {[0], [1], ..., [m - 1]} $
-]
-
-=== Cosets
-
-#definition[Coset][
-  Let $H subset.eq G$ be a subgroup of a group $G$.
-  For any $g in G$, the *left coset* of $H$ in $G$ is
-  $ g H = {g * h | h in H}. $
-
-  Similarly, the *right coset* is
-  $ H g = {h * g | h in H}. $
-]
-
-#theorem[Lagrange's][
-  Let $G$ be a finite group and $H subset.eq G$ a subgroup.
-  Then the order of $H$ divides the order of $G$.
-]
-
-#corollary[
-  If $G$ is of prime order, it has no nontrivial subgroups.
-]
-
-#theorem[Lagrange's, Generalized][
-  Regardless of whether G is finite or infinite,
-  $ car(G) = car(G : H) car(H). $
-]
-
-=== Symmetry
-
-#definition[Isometry][
-  Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces.
-  A map $f : X -> Y$ is an *isometry* if
-  it perserves distances, that is,
-  $ d_X (x_1, x_2) = d_Y (f(x_1), f(x_2)) quad forall x_1, x_2 in X. $
-]
-
-#definition[Symmetry][
-  A *symmetry* of an object $O subset.eq X$ in a metric space $(X, d)$ is
-  an isometry $f : X -> X$ with the image $f(O) = O$.
-
-  Informally, a symmetry of a geometric object is
-  a rearrangment of the object preserving
-  the arrangement of its sides and vertices
-  as well as its distances and angles.
-]
-
-#examples[
-  Some types of symmetries:
-
-  + / Reflectional:
-      Reflection across a hyperplane
-      (a line in $RR^2$ or a plane in $RR^3$)
-  + / Rotational:
-      Rotation within a plane
-      ($RR^2$ is rotated around a fixed point, while
-      $RR^3$ is rotated around an axis).
-  + / Translational:
-      All points are shifted by a constant vector.
-  + / Identity:
-      No change.
-]
-
-// Im unsure of the following
-#definition[Rigid Motion][
-  A *rigid motion* is a map $f : RR^n -> RR^n$ such that
-  $ norm(u - v) = norm(f(u) - f(v)) quad forall u, v in RR^n. $
-
-  Equivalently, it is a surjective isometry between Euclidean spaces
-]
-
-#example[
-  A symmetry of an object in an Euclidean space $X = RR^n$
-  is also a rigid motion.
-]
-
-#definition[Dihedral Group][
-  The *dihedral group* $D_n$ is
-  the group of symmetries (or equivalently rigid motions) of an $n$-gon.
-  Its degree is $n$ and its order is $2n$.
-]
-
 = Sets
 
 === Set theory
@@ -211,6 +127,11 @@
   It is always surjective.
 ]
 
+#definition[
+  The *integers modulo $m$* is a set of equivalence classes
+  $ ZZ_m = {[0], [1], ..., [m - 1]} $
+]
+
 = Groups
 
 === Definition
@@ -260,6 +181,31 @@ Let $(G, *)$ be a group.
 
 #definition[Cyclical Group][
   We say $(G, *)$ is a *cyclical group* if $exists a in G : chevrons(a) = G$.
+]
+
+== Cosets
+
+#definition[Coset][
+  Let $H subset.eq G$ be a subgroup of a group $G$.
+  For any $g in G$, the *left coset* of $H$ in $G$ is
+  $ g H = {g * h | h in H}. $
+
+  Similarly, the *right coset* is
+  $ H g = {h * g | h in H}. $
+]
+
+#theorem[Lagrange's][
+  Let $G$ be a finite group and $H subset.eq G$ a subgroup.
+  Then the order of $H$ divides the order of $G$.
+]
+
+#corollary[
+  If $G$ is of prime order, it has no nontrivial subgroups.
+]
+
+#theorem[Lagrange's, Generalized][
+  Regardless of whether G is finite or infinite,
+  $ car(G) = car(G : H) car(H). $
 ]
 
 == Permutations
@@ -325,6 +271,60 @@ Let $(G, *)$ be a group.
 
   The kernel of this homomorphism is the alternating group
   $ ker("sgn") = A_n. $
+]
+
+== Symmetry
+
+#definition[Isometry][
+  Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces.
+  A map $f : X -> Y$ is an *isometry* if
+  it perserves distances, that is,
+  $ d_X (x_1, x_2) = d_Y (f(x_1), f(x_2)) quad forall x_1, x_2 in X. $
+]
+
+#definition[Symmetry][
+  A *symmetry* of an object $O subset.eq X$ in a metric space $(X, d)$ is
+  an isometry $f : X -> X$ with the image $f(O) = O$.
+
+  Informally, a symmetry of a geometric object is
+  a rearrangment of the object preserving
+  the arrangement of its sides and vertices
+  as well as its distances and angles.
+]
+
+#examples[
+  Some types of symmetries:
+
+  + / Reflectional:
+      Reflection across a hyperplane
+      (a line in $RR^2$ or a plane in $RR^3$)
+  + / Rotational:
+      Rotation within a plane
+      ($RR^2$ is rotated around a fixed point, while
+      $RR^3$ is rotated around an axis).
+  + / Translational:
+      All points are shifted by a constant vector.
+  + / Identity:
+      No change.
+]
+
+// Im unsure of the following
+#definition[Rigid Motion][
+  A *rigid motion* is a map $f : RR^n -> RR^n$ such that
+  $ norm(u - v) = norm(f(u) - f(v)) quad forall u, v in RR^n. $
+
+  Equivalently, it is a surjective isometry between Euclidean spaces
+]
+
+#example[
+  A symmetry of an object in an Euclidean space $X = RR^n$
+  is also a rigid motion.
+]
+
+#definition[Dihedral Group][
+  The *dihedral group* $D_n$ is
+  the group of symmetries (or equivalently rigid motions) of an $n$-gon.
+  Its degree is $n$ and its order is $2n$.
 ]
 
 = Fields
