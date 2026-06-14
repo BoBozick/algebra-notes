@@ -49,15 +49,15 @@
     A ->^f B
   $
   and is
-  - *surjective* or *onto* 
+  - *surjective* or *onto*
     if $f(A) = B$,
     which is equivalent to being *right invertible*
     with $f compose f^(-1) = id_B$.
-  - *injective* or *one-to-one* 
+  - *injective* or *one-to-one*
     if $a_1 != a_2 ==> f(a_1) != f(a_2)$,
     which is equivalent to being *left invertible*
     with $f^(-1) compose f = id_A$.
-  - *bijective* or a *one-to-one correspondence* 
+  - *bijective* or a *one-to-one correspondence*
     if both above apply,
     which is equivalent to being *invertible*.
 ]
@@ -101,7 +101,7 @@
 #example[
   An automorphism of a set is called a *permutation*.
 ]
-  
+
 === Equivalance
 
 #definition[Equivalance Relation][
@@ -132,6 +132,10 @@
   The equivalence classes form a partition of $A$.
 ]
 
+#example[
+  The modulo $m$ congruence class $[a] = {a + k m | k in ZZ}.$
+]
+
 #definition[Quotient Map][
   Let $R$ be an equivalence relation on $A$.
   The map $pi : A -> A slash.double R$ defined by
@@ -141,9 +145,58 @@
   It is always surjective.
 ]
 
-#definition[
-  The *integers modulo $m$* is a set of equivalence classes
-  $ ZZ_m = {[0], [1], ..., [m - 1]} $
+=== Linear Diophantine Equations
+
+Let $a$ and $b$ be integers with $gcd(a, b) = d$.
+
+#lemma[Bézout's Identity][
+  There exist integers $x$ and $y$ such that $a x + b y = d$.
+]
+
+#lemma[Euclid's][
+  If $p$ is prime and $p divides a b$, then $p divides a$ or $p divides b$.
+]
+
+#theorem[Solvability Condition][
+  The linear Diophantine equation $a x + b y = c$ has (infinitely many)
+  solutions if and only if $d divides c.$
+]
+
+#theorem[Solutions][
+  The solutions, if they exist, are
+  $ x = x_0 + t b / d, quad y = y_0 - t a / d, quad "for" t in ZZ. $
+]
+
+#theorem[Euclidean Algorithm][
+  Let $a$ and $b$ be non-negative integers with $a >= b$.
+  Then there exist unique integers $q$ and $r$ such that
+  $ a = q b + r, quad 0 <= r < b. $
+]
+
+#example[
+  We apply the algorithm to compute $gcd(252, 105)$:
+  $
+    252 & = 2 dot 105 + 42 \
+    105 & = 2 dot 42 + 21 \
+     42 & = 2 dot 21 + 0 \
+  $
+  Hence, $gcd(252, 105) = 21$.
+]
+
+#example[
+  We then use our results to solve $252 x + 105 y = 21$.
+
+  Since $gcd(252, 105) = 21$, we now work backwards:
+  $
+    21 & = 105 - 2 dot 42 \
+       & = 105 - 2 dot (252 - 2 dot 105) \
+       & = 105 - 2 dot 252 + 4 dot 105 \
+       & = 5 dot 105 - 2 dot 252 \
+       & = -2 dot 252 + 5 dot 105
+  $
+  So a particular solution is $x_0 = -2, y_0 = 5$.
+  The general solutions are
+  $ x = -2 + 5t, quad y = 5 - 12t, quad "for" t in ZZ. $
 ]
 
 = Groups
@@ -161,6 +214,13 @@
 
   Additionally, a group is called *abelian* or *commutative* if it is
   5. (Commutative) $a * b = b * a$
+]
+
+#examples[
+  The *general linear group* $G L_n (RR)$
+  consists of all matrices in $RR^(n times n)$ with $det != 0$.
+  The *special linear group* $S L_n (RR)$
+  additionally requires that $det = 1$.
 ]
 
 #tip[
@@ -187,14 +247,37 @@ Let $(G, *)$ be a group.
   + $a * b^(-1) in H quad forall a, b in H$
 ]
 
-#definition[Cyclical Subgroup][
-  For all $a in G$, the set
+#definition[Cyclic Subgroup][
+  For any $a in G$, the set
   $ chevrons(a) = {a^k | k in ZZ} $
-  with the operation $*$ is a *cyclical subgroup* of $(G, *)$.
+  forms a *cyclic subgroup* of $G$.
 ]
 
-#definition[Cyclical Group][
-  We say $(G, *)$ is a *cyclical group* if $exists a in G : chevrons(a) = G$.
+#theorem[
+  The cyclic subgroup $chevrons(a) <= G$ is
+  the smallest subgroup containing $a.$ 
+]
+
+#definition[Generator][
+  An element $a in G$ is a *generator* of $G$ if $chevrons(a) = G$.
+]
+
+#definition[Cyclic Group][
+  We say $G$ is a *cyclic group* if it contains a *generator* of itself.
+]
+
+#theorem[
+  All subgroups of a cyclic group are cyclic.
+]
+
+#theorem[
+  Every cyclic group is abelian.
+]
+
+#proof[
+  Let $g$ and $gamma$ be elements of a cyclic group $G = chevrons(a)$.
+  Then there are integers $m$ and $n$ such that $g = a^m$ and $y = a^n$, so
+  $ g gamma = a^m a^n = a^(m + n) = a^(n + m) = a^n a^m = gamma g. $
 ]
 
 == Cosets
@@ -217,6 +300,13 @@ Let $H subset.eq G$ be a subgroup of a group $G$.
   There are equally many left and right cosets of $H$ in $G$.
 ]
 
+#definition[Order][
+  The *order of a group* $|G|$ is the number of elements in $G$.
+
+  The *order of an element* $|g|$ is the smallest positive integer $n$
+  such that $g^n = e$. If there is no such $n$, the order is infinite.
+]
+
 #definition[Index][
   The *index* of $H$ in $G$ is the number of left cosets, denoted
   $[G : H].$
@@ -233,7 +323,12 @@ Let $H subset.eq G$ be a subgroup of a group $G$.
 
 #theorem[Lagrange's, Generalized][
   Regardless of whether G is finite or infinite,
-  $ car(G) = car(G : H) car(H). $
+  $ |G| = [G : H] |H|. $
+]
+
+#proof[
+  $G$ has $|G|$ elements and is partitioned into
+  $[G : H]$ distinct left cosets, each of which has $|H|$ elements.
 ]
 
 #theorem[Fermat's Little][
@@ -365,6 +460,34 @@ Let $H subset.eq G$ be a subgroup of a group $G$.
   The *dihedral group* $D_n$ is
   the group of symmetries (or equivalently rigid motions) of an $n$-gon.
   Its degree is $n$ and its order is $2n$.
+]
+
+== Rings
+
+#definition[Ring][
+  A *ring* is a set $R$ with two binary operations $+$ and $dot$ such that
+  + $(R, +)$ is an abelian group with identity $0$.
+  + $(R, dot)$ is a monoid with identity $1$.
+  + Multiplication distributes over addition:\
+    for all $a, b, c in R$, $a dot (b + c) = a dot b + a dot c$.
+]
+
+#definition[Group of Units][
+  Let $(R, +, dot)$ be a ring.
+  The *group of units* $U(R)$ is the set of all elements in $R$ that have
+  multiplicative inverses, that is
+  $ U(R) = {a in R | exists a^(-1) in R : a dot a^(-1) = a^(-1) dot a = 1}. $
+]
+
+#definition[$ZZ_m$][
+  The *integers modulo $n$* is a set of congruence classes
+  $ ZZ_n = {[0], [1], ..., [n - 1]} $
+  that form an abelian group under $+$ and a monoid under $times$,
+  together forming a ring with a group of units called
+  the *multiplicative group of integers modulo $n$*, denoted $U(n)$
+  and consisting of the integers coprime to $n$,
+  with inverse elements defined to satisfy
+  $a a^(-1) equiv 1 space (mod n).$
 ]
 
 = Fields
