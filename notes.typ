@@ -233,7 +233,9 @@ Let $a$ and $b$ be integers with $gcd(a, b) = d$.
   *abelian* is usually not capitalized.
 ]
 
-=== Subgroups
+== Subgroups
+
+=== Definition
 
 Let $(G, *)$ be a group.
 
@@ -251,6 +253,8 @@ Let $(G, *)$ be a group.
   + $|H| < oo$ (finite)
   + $a * b in H quad forall a, b in H$ (closed)
 ]
+
+=== Cyclic
 
 #definition[Cyclic Subgroup][
   For any $a in G$, the set
@@ -283,6 +287,55 @@ Let $(G, *)$ be a group.
   Let $g$ and $gamma$ be elements of a cyclic group $G = chevrons(a)$.
   Then there are integers $m$ and $n$ such that $g = a^m$ and $y = a^n$, so
   $ g gamma = a^m a^n = a^(m + n) = a^(n + m) = a^n a^m = gamma g. $
+]
+
+=== Families
+
+==== Commutation
+
+Let $X$ be any nonempty subset of $G$.
+
+#definition[Centralizer][
+  The *centralizer* of $X$ in $G$ is the set
+  $ C_G (X) = braces(g in G, cond: g x = x g "for all" x in X), $
+  all elements in $G$ that commute with all elements in $X$,
+  fixing every element of $X$ under conjugation.
+]
+
+#note[
+  If $X$ is a singleton set ${x}$, we simply write $C_G (x)$.
+]
+
+#definition[Center][
+  The *center* of $G$ is the set
+  $
+    Z(G) = C_G (G) =
+    braces(g in G, cond: g gamma = gamma g "for all" gamma in G)
+  $
+  all elements in $G$ that commute with all elements in $G$,
+  fixing every element of $G$ under conjugation.
+]
+
+#definition[Normalizer][
+  The *normalizer* of $X$ in $G$ is the set
+  $ N_G (X) = braces(g in G, cond: g X g^(-1) = X), $
+  all elements in $G$ that commute with $X$ as a set,
+  fixing $X$ as a set under conjugation.
+]
+
+#theorem[
+  $Z(G) <= C_G (X) <= N_G (X) <= G,$
+  with all equalities if $G$ is abelian.
+]
+
+==== Group Action
+
+Let $* : G times X -> X$ be a group action.
+
+#definition[Stabilizer][
+  The *stablizer* of $x in X$ is the set
+  $ G_x = braces(g in G, cond: g * x = x), $
+  all elements in $G$ that fix $x$ under the group action $*$.
 ]
 
 == Cosets
