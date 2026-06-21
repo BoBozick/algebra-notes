@@ -77,6 +77,7 @@
   + $phi(g^(-1)) = phi(g)^(-1)$ for all $g in G$
 ]
 
+
 #definition[Isomorphism][
   An *isomorphism* is a bijective homomorphism.
 
@@ -241,10 +242,14 @@ Let $(G, *)$ be a group.
   under the operation inherited from $G$.
 ]
 
-#tip[
-  It follows that $H$ is a subgroup if
+#theorem[Subgroup Criterion][
+  A subset $H subset.eq G$ is a subgroup if and only if
   + $H != emptyset$
   + $a * b^(-1) in H quad forall a, b in H$
+  or
+  + $H != emptyset$ (nonempty)
+  + $|H| < oo$ (finite)
+  + $a * b in H quad forall a, b in H$ (closed)
 ]
 
 #definition[Cyclic Subgroup][
@@ -334,6 +339,11 @@ Let $H$ be a subgroup of a group $G$.
   $[G : H]$ distinct left cosets, each of which has $|H|$ elements.
 ]
 
+#definition[Conjugation][
+  The *conjugation* by $a in G$ is an *inner automorphism* of $G$
+  defined $g mapsto g a g^(-1)$.
+]
+
 #definition[Normal Subgroup][
   #let dist = h(1em)
   
@@ -392,7 +402,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   the *multiplicative group of integers modulo $n$*, denoted $U(n)$
   and consisting of the integers coprime to $n$,
   with inverse elements defined to satisfy
-  $a a^(-1) equiv 1 space (mod n).$
+  $a a^(-1) (equiv a^(-1) a) equiv 1 space (mod n).$
 ]
 
 #definition[Euler's Totient Function][
@@ -433,34 +443,64 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 === Transpositions
 
 #definition[Transposition][
-  A transposition of the elements $i, j in {1, ..., n}$
-  is the permutation $tau_(i j)$ with the cyclic notation $(i j)$.
+  A *transposition* of the elements $i, j in {1, ..., n}$
+  is the permutation $tau_(i j)$ with the cycle notation $(i space j)$.
 ]
 
 #theorem[
-  A permutation $sigma in S_n$ can be written as
-  a composition of transpositions.
+  Any permutation can be written as compositions of transpositions.
 ]
 
 #theorem[
-  The identity $id in S_n$ may only be written as
+  The identity permutation may only be written as
   an even number of transpositions.
 ]
 
 #definition[Sign of a Permutation][
-  Let $k$ be the
-  number of transpositions in
+  Let $k$ be the number of transpositions in
   any decomposition of a permutation $sigma in S_n$.
   The *sign* of $sigma$ is $(-1)^k$.
-  Hence,
-  - if $k$ is *even* then $sgn(sigma) = +1$
-    and $sigma$ is said to be even.
-  - if $k$ is *odd* then $sgn(sigma) = -1$
-    and $sigma$ is said to be odd.
+
+  // Align.
+  #context {
+    let raw = ([*even*], [*odd*])
+
+    let widths = raw.map(it => measure(it).width)
+    let max-width = calc.max(..widths)
+
+    let processed = raw.map(it => box(width: max-width, it))
+    
+    [
+      Hence,
+      - if $k$ is #processed.at(0) then $sgn(sigma) = +1$
+        and $sigma$ is said to be even.
+      - if $k$ is #processed.at(1) then $sgn(sigma) = -1$
+        and $sigma$ is said to be odd.
+    ]
+  }
 ]
 
-#definition[Fixed Point][
-  A fixed point is invariant under
+#theorem[Permutation Inverse][
+  Let $sigma in S_n$ be a permutation.
+  + $sigma = cycle(a_1, a_2, dots.h.c, a_m) = tau_1 tau_2 dots.h.c tau_k$
+    for some $m <= n$ and $k$
+  + $sigma^(-1)$ exists
+    #proof[
+      $sigma$ is a bijection.
+    ]
+  + $sigma^(-1) = cycle(a_m, dots.h.c, a_2, a_1) = tau_1 tau_2 dots.h.c tau_k$
+    #proof[
+      Consider that
+      $(tau_i tau_j)^(-1) = tau_j^(-1) tau_i^(-1) = tau_j tau_i$
+      and
+      $cycle(a, b, c)^(-1) = (a -> b -> c -> a)^(-1) = (a <- b <- c <- a)$.
+    ]
+  + $sgn(sigma^(-1)) = sgn(sigma) = (-1)^k$
+  
+]
+
+#definition[Fixed Point)][
+  A *fixed point* is invariant under
   a transformation such as a permutation.
 ]
 
@@ -549,6 +589,11 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   The *dihedral group* $D_n$ is
   the group of symmetries (or equivalently rigid motions) of an $n$-gon.
   Its degree is $n$ and its order is $2n$.
+]
+
+#theorem[
+  The dihedral group can be represented as
+  $ D_n = chevrons(r, s mid(|) r^n = s^2 = 1, r s = s r^(-1)). $
 ]
 
 = Fields
