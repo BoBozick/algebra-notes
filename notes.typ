@@ -25,7 +25,9 @@
 
 = Sets
 
-=== Set theory
+== Relations
+
+=== Set Theory
 
 #definition[Tuple][
   A tuple (or sometimes *list*) is
@@ -113,7 +115,25 @@
   + / symmetric: $(a, b) in R ==> (b, a) in R$
   + / transitive: $(a, b), (b, c) in R ==> (a, c) in R$
 
-  If $(x, y) in R$ we write $x tilde y$.
+  If $(x, y) in R$ we write $x R y$ or $x tilde y$.
+]
+
+Let $R$ be an equivalence relation on a set $A$.
+
+#definition[Equivalence Class][
+  The *equivalence class* of an element $a in A$
+  $ [a] = dash(a) = {b in A | b tilde a} $
+  is the set of all elements related to it.
+]
+
+#example[
+  The modulo $m$ congruence class $[a] = {a + k m | k in ZZ}.$
+]
+
+#definition[Quotient Set][
+  The *quotient set* of $A$ by $R$
+  $ A slash R = {[a] | a in A} $
+  is the set of all equivalence classes induced by the relation.
 ]
 
 #definition[Partition][
@@ -122,29 +142,20 @@
   whose union is $A$.
 ]
 
-#definition[Equivalence Class][
-  Let $R$ be an equivalence relation on a set $A$.
-  The *equivalence class* of $a in A$ is
-  $ [a] = {b in A | b tilde a}. $
-
-  The set of all equivalence classes is written
-  $ A slash.double R $ and is called the *quotient set*.
-
-  The equivalence classes form a partition of $A$.
-]
-
-#example[
-  The modulo $m$ congruence class $[a] = {a + k m | k in ZZ}.$
+#theorem[
+  The quotient set $A slash R$ forms a partition of $A$.
 ]
 
 #definition[Quotient Map][
-  Let $R$ be an equivalence relation on $A$.
-  The map $pi : A -> A slash.double R$ defined by
-  $ pi(a) = [a] $
-  is called the *quotient map*.
-
-  It is always surjective.
+  A *quotient map* is a map $pi : A -> A slash R$ defined by
+  $ pi(a) = [a]. $
 ]
+
+#theorem[][
+  Quotient maps are surjective.
+]
+
+== $ZZ$
 
 === Linear Diophantine Equations
 
@@ -202,7 +213,7 @@ Let $a$ and $b$ be integers with $gcd(a, b) = d$.
 
 = Groups
 
-=== Definition
+== Definition
 
 #definition[Group][
   A *group* $(G, *)$ is a nonempty set $G$ with a binary operation
@@ -231,6 +242,12 @@ Let $a$ and $b$ be integers with $gcd(a, b) = d$.
 #note[
   Defying conventional wisdom,
   *abelian* is usually not capitalized.
+]
+
+#definition[Group Action][
+  A map $dot : G times X -> X$ is a *(left) group action* if it satisfies:
+  + (Identity) $e dot x = x$ for all $x in X$.
+  + (Compatibility) $g dot (h dot x) = (g h) dot x$ for all $g, h in G$ and $x in X$.
 ]
 
 == Subgroups
@@ -297,9 +314,13 @@ Let $X$ be any nonempty subset of $G$.
 
 #definition[Centralizer][
   The *centralizer* of $X$ in $G$ is the set
-  $ C_G (X) = braces(g in G, cond: g x = x g "for all" x in X), $
+  $ C_G (X) = braces(g in G, cond: g x g^(-1) = x "for all" x in X), $
   all elements in $G$ that commute with all elements in $X$,
   fixing every element of $X$ under conjugation.
+]
+
+#remark[
+  $g x g^(-1) = x <==> g x = x g$
 ]
 
 #note[
@@ -310,7 +331,7 @@ Let $X$ be any nonempty subset of $G$.
   The *center* of $G$ is the set
   $
     Z(G) = C_G (G) =
-    braces(g in G, cond: g gamma = gamma g "for all" gamma in G)
+    braces(g in G, cond: g gamma g^(-1) = gamma "for all" gamma in G),
   $
   all elements in $G$ that commute with all elements in $G$,
   fixing every element of $G$ under conjugation.
@@ -340,6 +361,8 @@ Let $* : G times X -> X$ be a group action.
 
 == Cosets
 
+=== Left and Right
+
 Let $H$ be a subgroup of a group $G$.
 
 #definition[Coset][
@@ -357,6 +380,8 @@ Let $H$ be a subgroup of a group $G$.
 #theorem[
   There are equally many left and right cosets of $H$ in $G$.
 ]
+
+=== Order
 
 #definition[Order][
   The *order of a group* $|G|$ is the number of elements in $G$.
@@ -391,6 +416,19 @@ Let $H$ be a subgroup of a group $G$.
   $G$ has $|G|$ elements and is partitioned into
   $[G : H]$ distinct left cosets, each of which has $|H|$ elements.
 ]
+
+
+#theorem[
+  Let $(g, h) in G times H$ be a tuple of groups.
+  If they have finite orders $|g| = r < oo$ and $|h| = s < oo$,
+  then $|(g, h)| = lcm(r, s)$.
+]
+
+#corollary[
+  $ZZ_m times ZZ_n tilde.equiv ZZ_(m n) space <==> space gcd(m, n) = 1$
+]
+
+=== Conjugation
 
 #definition[Conjugation][
   The *conjugation* by $a in G$ is an *inner automorphism* of $G$
@@ -592,6 +630,8 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 
 == Symmetry
 
+=== In Metric Spaces
+
 #definition[Isometry][
   Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces.
   A map $f : X -> Y$ is an *isometry* if
@@ -638,6 +678,8 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   is also a rigid motion.
 ]
 
+=== Dihedral Groups
+
 #definition[Dihedral Group][
   The *dihedral group* $D_n$ is
   the group of symmetries (or equivalently rigid motions) of an $n$-gon.
@@ -650,6 +692,8 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 ]
 
 = Fields
+
+== Definition
 
 #definition[Field][
   A *field* is a set $F$
@@ -664,6 +708,8 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 #examples[
   $QQ, RR, CC, RR(x), QQ(i),$ and $FF_p$ for prime $p$.
 ]
+
+== Vector Spaces
 
 #definition[Vector Space][
   A vector space over a field $F$ is a set $V$ with two operations:
