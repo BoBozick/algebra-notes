@@ -79,6 +79,10 @@
   + $phi(g^(-1)) = phi(g)^(-1)$ for all $g in G$
 ]
 
+#definition[Kernel][
+  The *kernel* of a group homorphism $phi : G -> H$ is the set
+  $ ker phi = {g in G mid(|) phi(g) = id_H }. $
+]
 
 #definition[Isomorphism][
   An *isomorphism* is a bijective homomorphism.
@@ -122,17 +126,17 @@ Let $R$ be an equivalence relation on a set $A$.
 
 #definition[Equivalence Class][
   The *equivalence class* of an element $a in A$
-  $ [a] = dash(a) = {b in A | b tilde a} $
+  $ [a] = dash(a) = {b in A mid(|) b tilde a} $
   is the set of all elements related to it.
 ]
 
 #example[
-  The modulo $m$ congruence class $[a] = {a + k m | k in ZZ}.$
+  The modulo $m$ congruence class $[a] = {a + k m mid(|) k in ZZ}.$
 ]
 
 #definition[Quotient Set][
   The *quotient set* of $A$ by $R$
-  $ A slash R = {[a] | a in A} $
+  $ A slash R = {[a] mid(|) a in A} $
   is the set of all equivalence classes induced by the relation.
 ]
 
@@ -275,17 +279,17 @@ Let $(G, *)$ be a group.
 
 #definition[Cyclic Subgroup][
   For any $a in G$, the set
-  $ chevrons(a) = {a^k | k in ZZ} $
+  $ ⟨a⟩ = {a^k mid(|) k in ZZ} $
   forms a *cyclic subgroup* of $G$.
 ]
 
 #theorem[
-  The cyclic subgroup $chevrons(a) <= G$ is
+  The cyclic subgroup $⟨a⟩ <= G$ is
   the smallest subgroup containing $a.$ 
 ]
 
 #definition[Generator][
-  An element $a in G$ is a *generator* of $G$ if $chevrons(a) = G$.
+  An element $a in G$ is a *generator* of $G$ if $⟨a⟩ = G$.
 ]
 
 #definition[Cyclic Group][
@@ -301,7 +305,7 @@ Let $(G, *)$ be a group.
 ]
 
 #proof[
-  Let $g$ and $gamma$ be elements of a cyclic group $G = chevrons(a)$.
+  Let $g$ and $gamma$ be elements of a cyclic group $G = ⟨a⟩$.
   Then there are integers $m$ and $n$ such that $g = a^m$ and $y = a^n$, so
   $ g gamma = a^m a^n = a^(m + n) = a^(n + m) = a^n a^m = gamma g. $
 ]
@@ -314,7 +318,7 @@ Let $X$ be any nonempty subset of $G$.
 
 #definition[Centralizer][
   The *centralizer* of $X$ in $G$ is the set
-  $ C_G (X) = braces(g in G, cond: g x g^(-1) = x "for all" x in X), $
+  $ C_G (X) = {g in G mid(|) g x g^(-1) = x "for all" x in X}, $
   all elements in $G$ that commute with all elements in $X$,
   fixing every element of $X$ under conjugation.
 ]
@@ -331,7 +335,7 @@ Let $X$ be any nonempty subset of $G$.
   The *center* of $G$ is the set
   $
     Z(G) = C_G (G) =
-    braces(g in G, cond: g gamma g^(-1) = gamma "for all" gamma in G),
+    {g in G mid(|) g gamma g^(-1) = gamma "for all" gamma in G},
   $
   all elements in $G$ that commute with all elements in $G$,
   fixing every element of $G$ under conjugation.
@@ -339,7 +343,7 @@ Let $X$ be any nonempty subset of $G$.
 
 #definition[Normalizer][
   The *normalizer* of $X$ in $G$ is the set
-  $ N_G (X) = braces(g in G, cond: g X g^(-1) = X), $
+  $ N_G (X) = {g in G mid(|) g X g^(-1) = X}, $
   all elements in $G$ that commute with $X$ as a set,
   fixing $X$ as a set under conjugation.
 ]
@@ -355,7 +359,7 @@ Let $* : G times X -> X$ be a group action.
 
 #definition[Stabilizer][
   The *stablizer* of $x in X$ is the set
-  $ G_x = braces(g in G, cond: g * x = x), $
+  $ G_x = {g in G mid(|) g * x = x}, $
   all elements in $G$ that fix $x$ under the group action $*$.
 ]
 
@@ -367,10 +371,10 @@ Let $H$ be a subgroup of a group $G$.
 
 #definition[Coset][
   For any $g in G$, the *left coset* of $H$ in $G$ is
-  $ g H = {g * h | h in H}. $
+  $ g H = {g * h mid(|) h in H}. $
 
   Similarly, the *right coset* is
-  $ H g = {h * g | h in H}. $
+  $ H g = {h * g mid(|) h in H}. $
 ]
 
 #theorem[
@@ -388,6 +392,19 @@ Let $H$ be a subgroup of a group $G$.
 
   The *order of an element* $|g|$ is the smallest positive integer $n$
   such that $g^n = e$. If there is no such $n$, the order is infinite.
+]
+
+#theorem[Classification][
+  #context {
+    let (Z, Zn) = match-widths($ZZ$, $ZZ_n$)
+    let (eq, lt) = match-widths($=$, $<$)
+
+    [
+      If $G$ is a cyclic group of order $n$, then
+      + $G tilde.equiv #Z <==> n #eq oo$
+      + $G tilde.equiv #Zn <==> n #lt oo$
+    ]
+  }
 ]
 
 #definition[Index][
@@ -478,7 +495,10 @@ Let $H$ be a subgroup of a group $G$.
   Let $(R, +, dot)$ be a ring.
   The *group of units* $U(R)$ is the set of all elements in $R$ that have
   multiplicative inverses, that is
-  $ U(R) = {a in R | exists a^(-1) in R : a dot a^(-1) = a^(-1) dot a = 1}. $
+  $
+    U(R) =
+    {a in R mid(|) exists a^(-1) in R : a dot a^(-1) = a^(-1) dot a = 1}.
+  $
 ]
 
 === $ZZ_n$
@@ -500,7 +520,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   $
     phi.alt (n)
     = |U(n)|
-    = |braces(k in ZZ, cond: 1 <= k <= n "and" gcd(n, k) = 1)|
+    = |{k in ZZ mid(|) 1 <= k <= n "and" gcd(n, k) = 1}|
   $
 ]
 
@@ -552,20 +572,14 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   any decomposition of a permutation $sigma in S_n$.
   The *sign* of $sigma$ is $(-1)^k$.
 
-  // Align.
   #context {
-    let raw = ([*even*], [*odd*])
+    let (even, odd) = match-widths([*even*], [*odd*])
 
-    let widths = raw.map(it => measure(it).width)
-    let max-width = calc.max(..widths)
-
-    let processed = raw.map(it => box(width: max-width, it))
-    
     [
       Hence,
-      - if $k$ is #processed.at(0) then $sgn(sigma) = +1$
+      - if $k$ is #even then $sgn(sigma) = +1$
         and $sigma$ is said to be even.
-      - if $k$ is #processed.at(1) then $sgn(sigma) = -1$
+      - if $k$ is #odd then $sgn(sigma) = -1$
         and $sigma$ is said to be odd.
     ]
   }
@@ -599,7 +613,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 
 #definition[Symmetric Group][
   The *symmetric group* of the finite set $X = {1, 2, ..., n}$ is
-  $ S_n = {sigma : X -> X | sigma "is bijective"} $
+  $ S_n = {sigma : X -> X mid(|) sigma "is bijective"} $
   and consists of $n!$ permutations,
   which form *the symmetric group on $n$ letters*
   under the operation of composition
@@ -615,7 +629,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 
 #definition[Alternating Group][
   The *alternating group*
-  $ A_n = {sigma in S_n | "sgn"(sigma) = 1} $
+  $ A_n = {sigma in S_n mid(|) "sgn"(sigma) = 1} $
   is the subgroup of $S_n$ consisting of all even permutations.
 
   It has $n!/2$ elements for $n >= 2$.
@@ -688,7 +702,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 
 #theorem[
   The dihedral group can be represented as
-  $ D_n = chevrons(r, s mid(|) r^n = s^2 = 1, r s = s r^(-1)). $
+  $ D_n = ⟨r, s mid(|) r^n = s^2 = 1, r s = s r^(-1)⟩. $
 ]
 
 = Fields
