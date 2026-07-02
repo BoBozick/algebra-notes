@@ -217,7 +217,9 @@ Let $a$ and $b$ be integers with $gcd(a, b) = d$.
 
 = Groups
 
-== Definition
+== Definitions
+
+=== Groups
 
 #definition[Group][
   A *group* $(G, *)$ is a nonempty set $G$ with a binary operation
@@ -248,15 +250,7 @@ Let $a$ and $b$ be integers with $gcd(a, b) = d$.
   *abelian* is usually not capitalized.
 ]
 
-#definition[Group Action][
-  A map $dot : G times X -> X$ is a *(left) group action* if it satisfies:
-  + (Identity) $e dot x = x$ for all $x in X$.
-  + (Compatibility) $g dot (h dot x) = (g h) dot x$ for all $g, h in G$ and $x in X$.
-]
-
-== Subgroups
-
-=== Definition
+=== Subgroups
 
 Let $(G, *)$ be a group.
 
@@ -310,9 +304,9 @@ Let $(G, *)$ be a group.
   $ g gamma = a^m a^n = a^(m + n) = a^(n + m) = a^n a^m = gamma g. $
 ]
 
-=== Families
+== Families
 
-==== Commutation
+=== Commutation
 
 Let $X$ be any nonempty subset of $G$.
 
@@ -353,14 +347,38 @@ Let $X$ be any nonempty subset of $G$.
   with all equalities if $G$ is abelian.
 ]
 
-==== Group Action
+#theorem[
+  If $X$ is a subgroup, not just a subset, then $X <= N_G (X) <= G.$
+]
 
-Let $* : G times X -> X$ be a group action.
+=== Group Action
+
+#definition[Group Action][
+  A map $dot : G times X -> X$ is a *(left) group action* if it satisfies:
+  + (Identity)
+    $e dot x = x$
+    for all $x in X$.
+  + (Compatibility)
+    $g dot (h dot x) = (g h) dot x$
+    for all $g, h in G$ and $x in X$.
+]
+
+Let $dot : G times X -> X$ be a group action.
+
+#definition[Kernel][
+  The *kernel* is the set
+  $ ker(dot) = {g in G mid(|) g dot x = x "for all" x in X}, $
+  all elements in $G$ that fix every element of $X$ under the group action.
+]
+
+#definition[Faithful][
+  A group action is *faithful* if $ker(dot) = {e}$.
+]
 
 #definition[Stabilizer][
-  The *stablizer* of $x in X$ is the set
-  $ G_x = {g in G mid(|) g * x = x}, $
-  all elements in $G$ that fix $x$ under the group action $*$.
+  The *stabi  lizer* of $x in X$ is the set
+  $ G_x = {g in G mid(|) g dot x = x}, $
+  all elements in $G$ that fix $x$ under the group action.
 ]
 
 == Cosets
@@ -415,7 +433,7 @@ Let $H$ be a subgroup of a group $G$.
 #theorem[Lagrange's][
   Let $G$ be finite.
   Then the order of $H$ divides the order of $G$.
-]
+] <thm-lagrange>
 
 #corollary[
   If $G$ is of prime order, it
@@ -457,7 +475,7 @@ Let $H$ be a subgroup of a group $G$.
   
   The following are equivalent for a subgroup $H$ of $G$:
   + $H$ is a *normal subgroup* of $G$,
-    denoted $H triangle.small.l G$.
+    denoted $H normal.l G$.
     \ #dist
   + $g h g^(-1) in H$ for all $g in G$ and $h in H$.
   + $g H g^(-1) subset.eq H$ for all $g in G$.
@@ -471,12 +489,48 @@ Let $H$ be a subgroup of a group $G$.
   Trivially, $G$ and ${e}$ are always normal subgroups.
 ]
 
+#theorem[
+  Every subgroup of index $2$ is normal.
+]
+
+#proof[
+  Let $H <= G$ be the subgroup such that $[G : H] = 2$.
+  We wish to show that $g H = H g$ for all $g in G$.
+
+  If $g in H$, then $g H = H = H g$.
+  Otherwise, if $g in.not H$, then $g H = G slash H = H g$
+  since $H union H g = G = H union g H$. // Not obvious!
+  
+  Thus, $g H = H g$ for all $g$, so $H$ is a normal subgroup of $G$.
+]
+
 #definition[Simple Group][
   A group is *simple* if it has no normal nontrivial proper subgroup.
 ]
 
 #theorem[
   All subgroups of abelian groups are normal subgroups.
+]
+
+=== The Isomorphism Theorems
+
+Let $phi : G -> H$ be a group homomorphism.
+
+#theorem[First or Fundamental of Homomorphisms][
+  $ker phi normal.eq.l G$ and $G slash ker phi tilde.equiv phi(G)$
+]
+
+#corollary[
+  + $phi$ is injective if and only if $ker phi = id_G$
+  + $|G : ker phi| = |phi(G)|$
+]
+
+#theorem[Second or Diamond][
+  Let $A <= G$ and $B <= G$ be subgroups such that $A <= N_G (B)$. Then,
+  + $A B <= G$
+  + $B normal.eq.l A B$
+  + $A inter B normal.eq.l A$
+  + $A B slash B tilde.equiv A slash A inter B$
 ]
 
 == Rings
@@ -633,6 +687,14 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   is the subgroup of $S_n$ consisting of all even permutations.
 
   It has $n!/2$ elements for $n >= 2$.
+]
+
+#problem[
+  Show that $A_4$ has no subgroup of order $6$.
+]
+
+#solution[
+  // TODO
 ]
 
 #theorem[
