@@ -23,6 +23,23 @@
   memes: true,
 )
 
+#image("/assets/image.png")
+
+#theorem[
+  If $p$ is the smallest prime index of $G$,
+  then all subgroups of order $p$ are normal.
+]
+
+#theorem[Cauchy's or Prime Divisors][
+  If $p$ is a prime that divides $|G|$,
+  then $G$ must have a subgroup _and an element_ of order $p$.
+]
+
+#theorem[Sylow's or Prime Power Divisors][
+  If $p^k$ is prime _power_ and divides $|G|$,
+  then $G$ must have a subgroup of order $p^k$.
+]
+
 = Sets
 
 == Relations
@@ -77,11 +94,7 @@
   If $phi : G -> H$ is a group homomorphism,
   + $phi(id_G) = id_H$
   + $phi(g^(-1)) = phi(g)^(-1)$ for all $g in G$
-]
-
-#definition[Kernel][
-  The *kernel* of a group homorphism $phi : G -> H$ is the set
-  $ ker phi = {g in G mid(|) phi(g) = id_H }. $
+  + $phi(G) <= H$
 ]
 
 #definition[Isomorphism][
@@ -272,7 +285,7 @@ Let $(G, *)$ be a group.
 === Cyclic
 
 #definition[Cyclic Subgroup][
-  For any $a in G$, the set
+  For every $a in G$, the set
   $ ⟨a⟩ = {a^k mid(|) k in ZZ} $
   forms a *cyclic subgroup* of $G$.
 ]
@@ -302,6 +315,54 @@ Let $(G, *)$ be a group.
   Let $g$ and $gamma$ be elements of a cyclic group $G = ⟨a⟩$.
   Then there are integers $m$ and $n$ such that $g = a^m$ and $y = a^n$, so
   $ g gamma = a^m a^n = a^(m + n) = a^(n + m) = a^n a^m = gamma g. $
+]
+
+== $ZZ_n$
+
+Let $a$ and $n$ be positive integers and let $p$ be prime.
+
+#definition[$ZZ_n$][
+  The *integers modulo $n$* is a set of congruence classes
+  $ ZZ_n = {[0], [1], ..., [n - 1]} $
+  that form an abelian group under $+$ and a monoid under $times$,
+  together forming a ring with a group of units called
+  the *multiplicative group of integers modulo $n$*, denoted $U(n)$
+  and consisting of the integers coprime to $n$,
+  with inverse elements defined to satisfy
+  $a a^(-1) (equiv a^(-1) a) equiv 1 space (mod n).$
+]
+
+#definition[Euler's Totient Function][
+  $
+    phi.alt (n)
+    = |U(n)|
+    = |{k in ZZ mid(|) 1 <= k <= n "and" gcd(n, k) = 1}|
+  $
+]
+
+#example[
+  $phi.alt (12) = |{1, 5, 7, 11}| = 4$
+]
+
+#theorem[Euler's][
+  If $a$ and $n$ are coprime, then
+  $ a^(phi.alt(n)) equiv 1 quad (mod n). $
+]
+
+#proof[
+  The order of $a$ is $|U(n)| = phi.alt (n).$
+]
+
+#lemma[
+  $phi.alt(p) = p - 1$
+]
+
+#theorem[Fermat's Little][
+  If $a$ and $p$ are coprime, then
+  $ a^(p - 1) equiv 1 quad (mod p). $
+
+  In general, even if they are not coprime,
+  $ a^p equiv a quad (mod p). $
 ]
 
 == Families
@@ -433,7 +494,7 @@ Let $H$ be a subgroup of a group $G$.
 #theorem[Lagrange's][
   Let $G$ be finite.
   Then the order of $H$ divides the order of $G$.
-] <thm-lagrange>
+]
 
 #corollary[
   If $G$ is of prime order, it
@@ -450,6 +511,10 @@ Let $H$ be a subgroup of a group $G$.
 #proof[
   $G$ has $|G|$ elements and is partitioned into
   $[G : H]$ distinct left cosets, each of which has $|H|$ elements.
+]
+
+#corollary[
+  If $H normal.eq G$ then $[G : H] = |G| / |H| = |G slash H|.$
 ]
 
 
@@ -471,27 +536,43 @@ Let $H$ be a subgroup of a group $G$.
 ]
 
 #definition[Normal Subgroup][
-  #let dist = h(1em)
+  #let dist = v(1em)
   
   The following are equivalent for a subgroup $H$ of $G$:
   + $H$ is a *normal subgroup* of $G$,
-    denoted $H normal.l G$.
-    \ #dist
+    denoted $H normal.eq G$.
+    #dist
   + $g h g^(-1) in H$ for all $g in G$ and $h in H$.
   + $g H g^(-1) subset.eq H$ for all $g in G$.
   + $g H g^(-1) = H$ for all $g in G$.
-    \ #dist
+    #dist
   + $g H = H g$ (equal left coset and right coset) for all $g in G$.
   + The sets of left and right cosets coincide.
 ]
 
 #examples[
-  Trivially, $G$ and ${e}$ are always normal subgroups.
+  Trivially, $G normal.eq G$ and ${e} normal.eq G$.
+]
+
+#warning[
+  Normalness is not transitive. That is,
+  $
+    A normal.eq B normal.eq C
+    space cancel(arrow.r.double.long, length: #50%, angle: #20deg) space
+    A normal.eq C.
+  $
+]
+
+#note[
+  Some authors use $normal$ exclusively for proper normal subgroups,
+  while others use it for all normal subgroups.
+  
+  The same principle holds for the subset sign $subset$.
 ]
 
 #theorem[
   Every subgroup of index $2$ is normal.
-]
+] <thm-index2>
 
 #proof[
   Let $H <= G$ be the subgroup such that $[G : H] = 2$.
@@ -512,95 +593,116 @@ Let $H$ be a subgroup of a group $G$.
   All subgroups of abelian groups are normal subgroups.
 ]
 
+#definition[Fiber][
+  Let $phi : G -> Omega$ be a surjective map from a group to a set.
+  The *fiber* of $phi$ over some $omega in Omega$ is its preimage in $G$
+  $ phi^(-1) (y) = {g in G mid(|) phi.alt(g) = omega}, $
+  the set of all elements in the domain that map to $omega$.
+]
+
+Let $phi : G -> H$ be a group homomorphism.
+
+#definition[Fiber of Group][
+  The *fiber* of $phi$ over some $h in H$ is
+  $ phi^(-1)(h) = {g in G mid(|) phi(g) = h}. $
+]
+
+#theorem[
+  The collection of nonempty fibers forms a partition of $G$.
+  Hence, every $g in G$ is only in the fiber over $phi(g)$.
+]
+
+#definition[Kernel][
+  The *kernel* of a group homorphism $phi$ is the set
+  $ ker phi = {g in G mid(|) phi(g) = id_H }. $
+]
+
+#theorem[
+  $ker phi = phi^(-1)(id_H) normal.eq G$
+]
+
+Let $K = ker phi = phi^(-1)(id_H) normal.eq G$.
+
+#theorem[
+  For every $g in G$ such that $phi(g) = h$ the entire fiber is
+  $ phi^(-1)(h) = g K = K g. $
+  
+  In words, the fibers of a homomorphism are the cosets of its kernel.
+]
+
+#definition[Quotient Group, Alternative][
+  The quotient group is
+  $ G slash K = {phi^(-1)(h) mid(|) h in phi(G)}, $
+  the set of all nonempty fibers of $phi$.
+
+  Note that $phi(G) = H$ if $phi$ is surjective.
+]
+
+#definition[Quotient Group][
+  Let $N normal.eq G$.
+  The *quotient group* or *factor group* is
+  $ G slash N = {g N mid(|) g in G} = {N g mid(|) g in G}, $
+  the set of all cosets of $N$ in $G$,
+  paired with the group operation
+  $ (a N) * (b N) = (a b) N quad forall a, b in G, $
+  which is well-defined if and only if $N normal.eq G$.
+]
+
+#example[#align(center)[
+  #let headings = ("name", "symbol", "set", "operation")
+
+  #let names = ("large group", "normal subgroup", "quotient group")
+  #let syms = ($G$, $N$, $G slash N$)
+  #let sets = ($ZZ$, $n ZZ$, $ZZ_n$)
+  #let ops = ($+$, $+$, $+ mod n$)
+
+  #let contents = names.zip(syms, sets, ops)
+  
+  #table(
+    columns: 4,
+    stroke: none,
+    align: (right, left, left, left),
+    inset: (x: 6pt, y: 7pt),
+    
+    table.vline(x: 1, stroke: 0.5pt),
+    table.hline(y: 1, stroke: 0.5pt),
+
+    table.header(..headings),
+    ..contents.flatten(),
+  )
+]]
+
 === The Isomorphism Theorems
 
 Let $phi : G -> H$ be a group homomorphism.
 
 #theorem[First or Fundamental of Homomorphisms][
-  $ker phi normal.eq.l G$ and $G slash ker phi tilde.equiv phi(G)$
+  + $ker phi normal.eq G$
+  + $phi(G) tilde.equiv G slash ker phi$
+  + $phi(G) <= H$
 ]
 
 #corollary[
-  + $phi$ is injective if and only if $ker phi = id_G$
-  + $|G : ker phi| = |phi(G)|$
+  #let dist = v(0.5em)
+
+  + $[G : ker phi] = |phi(G)|$
+    #dist
+    The following are equivalent:
+  + $phi "is surjective"$
+  + $H tilde.equiv G slash ker phi$
+  + $[G : ker phi] = |G| space "by (i)"$
+    #dist
+    The following are equivalent:
+  + $phi "is injective"$
+  + $ker phi = id_G$
 ]
 
 #theorem[Second or Diamond][
   Let $A <= G$ and $B <= G$ be subgroups such that $A <= N_G (B)$. Then,
   + $A B <= G$
-  + $B normal.eq.l A B$
-  + $A inter B normal.eq.l A$
+  + $B normal.eq A B$
+  + $A inter B normal.eq A$
   + $A B slash B tilde.equiv A slash A inter B$
-]
-
-== Rings
-
-=== Definition
-
-#definition[Ring][
-  A *ring* is a set $R$ with two binary operations $+$ and $dot$ such that
-  + $(R, +)$ is an abelian group with identity $0$.
-  + $(R, dot)$ is a monoid with identity $1$.
-  + Multiplication distributes over addition:\
-    for all $a, b, c in R$, $a dot (b + c) = a dot b + a dot c$.
-]
-
-#definition[Group of Units][
-  Let $(R, +, dot)$ be a ring.
-  The *group of units* $U(R)$ is the set of all elements in $R$ that have
-  multiplicative inverses, that is
-  $
-    U(R) =
-    {a in R mid(|) exists a^(-1) in R : a dot a^(-1) = a^(-1) dot a = 1}.
-  $
-]
-
-=== $ZZ_n$
-
-Let $a$ and $n$ be positive integers and let $p$ be prime.
-
-#definition[$ZZ_n$][
-  The *integers modulo $n$* is a set of congruence classes
-  $ ZZ_n = {[0], [1], ..., [n - 1]} $
-  that form an abelian group under $+$ and a monoid under $times$,
-  together forming a ring with a group of units called
-  the *multiplicative group of integers modulo $n$*, denoted $U(n)$
-  and consisting of the integers coprime to $n$,
-  with inverse elements defined to satisfy
-  $a a^(-1) (equiv a^(-1) a) equiv 1 space (mod n).$
-]
-
-#definition[Euler's Totient Function][
-  $
-    phi.alt (n)
-    = |U(n)|
-    = |{k in ZZ mid(|) 1 <= k <= n "and" gcd(n, k) = 1}|
-  $
-]
-
-#example[
-  $phi.alt (12) = |{1, 5, 7, 11}| = 4$
-]
-
-#theorem[Euler's][
-  If $a$ and $n$ are coprime, then
-  $ a^(phi.alt(n)) equiv 1 quad (mod n). $
-]
-
-#proof[
-  The order of $a$ is $|U(n)| = phi.alt (n).$
-]
-
-#lemma[
-  $phi.alt(p) = p - 1$
-]
-
-#theorem[Fermat's Little][
-  If $a$ and $p$ are coprime, then
-  $ a^(p - 1) equiv 1 quad (mod p). $
-
-  In general, even if they are not coprime,
-  $ a^p equiv a quad (mod p). $
 ]
 
 == Permutations
@@ -621,9 +723,13 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   an even number of transpositions.
 ]
 
+#theorem[Order][
+  $|sigma| = "length"(sigma)$
+]
+
 #definition[Sign of a Permutation][
   Let $k$ be the number of transpositions in
-  any decomposition of a permutation $sigma in S_n$.
+  any decomposition of a $(k + 1)$-cycle $sigma in S_n$,
   The *sign* of $sigma$ is $(-1)^k$.
 
   #context {
@@ -644,18 +750,24 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   + $sigma = cycle(a_1, a_2, dots.h.c, a_m) = tau_1 tau_2 dots.h.c tau_k$
     for some $m <= n$ and $k$
   + $sigma^(-1)$ exists
+  
     #proof[
       $sigma$ is a bijection.
     ]
   + $sigma^(-1) = cycle(a_m, dots.h.c, a_2, a_1) = tau_1 tau_2 dots.h.c tau_k$
+
     #proof[
       Consider that
       $(tau_i tau_j)^(-1) = tau_j^(-1) tau_i^(-1) = tau_j tau_i$
       and
       $cycle(a, b, c)^(-1) = (a -> b -> c -> a)^(-1) = (a <- b <- c <- a)$.
     ]
+  + $sigma^(-1) = sigma^k <==> "length"(sigma) = k$
+
+    #proof[
+      The order of a $k$-cycle is $k$.
+    ]
   + $sgn(sigma^(-1)) = sgn(sigma) = (-1)^k$
-  
 ]
 
 #definition[Fixed Point)][
@@ -689,12 +801,36 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   It has $n!/2$ elements for $n >= 2$.
 ]
 
+#theorem[
+  The number of $k$-cycles is
+  $ choose(n, k) (k - 1)! = n!/((n-k)!k!) (k - 1)! = n!/((n-k)!k) $
+  in $S_n$.
+  In $A_n$ there equally many if $k$ is odd,
+  but $0$ if $k$ is even.
+]
+
 #problem[
   Show that $A_4$ has no subgroup of order $6$.
 ]
 
 #solution[
-  // TODO
+  Assume the opposite;
+  suppose there is a subgroup $H <= A_4$ such that $|H| = 6$.
+
+  By Lagrange's theorem,
+  $[A_4 : H] = |A_4| / |H| = 12 / 6 = 2.$
+  @thm-index2 dictates that any subgroup of index $2$ is normal,
+  so $H normal A_4$.
+  Since the quotient group has order $|A_4 slash H| = [A_4 : H] = 2$,
+  $ (g H^2) = H space ==> space g^2 H space ==> space g^2 in H $
+  for all $g in A_4$.
+
+  There are 8 distinct 3-cycles in $A_4$.
+  The inverse of any 3-cycle $g in A_4$ is
+  $g^(-1) = g^2 in H$, since the length is 3.
+  Hence, $g in H$.
+  However, there are 8 distinct 3-cycles in $A_4$,
+  so it follows that $|H| >= 8 > 6$.
 ]
 
 #theorem[
@@ -765,6 +901,28 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 #theorem[
   The dihedral group can be represented as
   $ D_n = ⟨r, s mid(|) r^n = s^2 = 1, r s = s r^(-1)⟩. $
+]
+
+= Rings
+
+== Definition
+
+#definition[Ring][
+  A *ring* is a set $R$ with two binary operations $+$ and $dot$ such that
+  + $(R, +)$ is an abelian group with identity $0$.
+  + $(R, dot)$ is a monoid with identity $1$.
+  + Multiplication distributes over addition:\
+    for all $a, b, c in R$, $a dot (b + c) = a dot b + a dot c$.
+]
+
+#definition[Group of Units][
+  Let $(R, +, dot)$ be a ring.
+  The *group of units* $U(R)$ is the set of all elements in $R$ that have
+  multiplicative inverses, that is
+  $
+    U(R) =
+    {a in R mid(|) exists a^(-1) in R : a dot a^(-1) = a^(-1) dot a = 1}.
+  $
 ]
 
 = Fields
