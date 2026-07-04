@@ -426,6 +426,43 @@ Let $X$ be any nonempty subset of $G$.
 
 Let $dot : G times X -> X$ be a group action.
 
+#definition[Orbit][
+  The *orbit* of $x in X$ is the set
+  $ G dot x = {g dot x mid(|) g in G}, $
+  all points in $X$ that $x$ can be moved to by the group action.
+]
+
+#definition[Transitive][
+  The action of $G$ on $X$ is *transitive* if there is only one orbit, i.e.,
+  given any pair $x, y in X$ there is some $g in G$ such that $g dot x = y$.
+]
+
+#theorem[
+  The orbits of a cyclic subgroup $⟨sigma⟩ <= S_n$ is
+  the sets of numbers in the distinct cycles
+  given by its cycle decomposition.
+]
+
+#example[
+  The orbits of $⟨cycle(1, 2) cycle(3, 4, 5)⟩$ are ${1, 2}$ and ${3, 4, 5}$.
+]
+
+#definition[Stabilizer][
+  The *stabilizer* of $x in X$ is the set
+  $ G_x = {g in G mid(|) g dot x = x}, $
+  all elements in $G$ that fix $x$ under the group action.
+]
+
+#theorem[
+  $|G dot x| = [G : G_x] = |G| / |G_x|$
+]
+
+#definition[Fixed Point Set][
+  The *fixed point set* of $g in G$ is the set
+  $ X^g = {x in X mid(|) g dot x = x}, $
+  all elements in $X$ that are fixed under $g$.
+]
+
 #definition[Kernel][
   The *kernel* is the set
   $ ker(dot) = {g in G mid(|) g dot x = x "for all" x in X}, $
@@ -434,12 +471,6 @@ Let $dot : G times X -> X$ be a group action.
 
 #definition[Faithful][
   A group action is *faithful* if $ker(dot) = {e}$.
-]
-
-#definition[Stabilizer][
-  The *stabi  lizer* of $x in X$ is the set
-  $ G_x = {g in G mid(|) g dot x = x}, $
-  all elements in $G$ that fix $x$ under the group action.
 ]
 
 == Cosets
@@ -555,7 +586,7 @@ Let $H$ be a subgroup of a group $G$.
 ]
 
 #warning[
-  Normalness is not transitive. That is,
+  Normalness is not transitive, i.e.,
   $
     A normal.eq B normal.eq C
     space cancel(arrow.r.double.long, length: #50%, angle: #20deg) space
@@ -635,14 +666,14 @@ Let $K = ker phi = phi^(-1)(id_H) normal.eq G$.
   $ G slash K = {phi^(-1)(h) mid(|) h in phi(G)}, $
   the set of all nonempty fibers of $phi$.
 
-  Note that $phi(G) = H$ if $phi$ is surjective.
+  If $phi$ is surjective, then $phi(G) = H$ and all fibers are nonempty.
 ]
 
 #definition[Quotient Group][
   Let $N normal.eq G$.
   The *quotient group* or *factor group* is
-  $ G slash N = {g N mid(|) g in G} = {N g mid(|) g in G}, $
-  the set of all cosets of $N$ in $G$,
+  $ G slash N = {g N mid(|) g in G} (= {N g mid(|) g in G}), $
+  the set of all left cosets of $N$ in $G$,
   paired with the group operation
   $ (a N) * (b N) = (a b) N quad forall a, b in G, $
   which is well-defined if and only if $N normal.eq G$.
@@ -685,31 +716,38 @@ Let $phi : G -> H$ be a group homomorphism.
 #corollary[
   #let dist = v(0.5em)
 
-  + $[G : ker phi] = |phi(G)|$
+  + $|phi(G)| = [G : ker phi]$
     #dist
     The following are equivalent:
   + $phi "is surjective"$
   + $H tilde.equiv G slash ker phi$
-  + $[G : ker phi] = |G| space "by (i)"$
+  + $|G| = [G : ker phi] quad$ #proof[See (i).]
     #dist
     The following are equivalent:
   + $phi "is injective"$
   + $ker phi = id_G$
 ]
 
-#theorem[Second or Diamond][
-  Let $A <= G$ and $B <= G$ be subgroups such that $A <= N_G (B)$. Then,
-  + $A B <= G$
-  + $B normal.eq A B$
-  + $A inter B normal.eq A$
-  + $A B slash B tilde.equiv A slash A inter B$
+#lemma[
+  Let $H$ and $K$ be subgroups of $G$.
+  Then $H K <= G <==> H K = K H$.
 ]
+
+#theorem[Second or Diamond or Parallelogram][
+  Let $S <= G$ and $N <= G$ be subgroups such that $S <= N_G (N)$. Then,
+  + $S N <= G$ #h(1em) #proof[See the above lemma.] 
+  + $N normal.eq S N$
+  + $S inter N normal.eq S$
+  + $(S N) slash N tilde.equiv S slash (S inter N)$
+]
+
+#image("assets/image-1.png", width: (72 / 300) * 333pt)
 
 == Permutations
 
 === Transpositions
 
-#definition[Transposition][
+#definition[Transposition][#image("assets/image-2.png")
   A *transposition* of the elements $i, j in {1, ..., n}$
   is the permutation $tau_(i j)$ with the cycle notation $(i space j)$.
 ]
@@ -847,7 +885,7 @@ Let $phi : G -> H$ be a group homomorphism.
 #definition[Isometry][
   Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces.
   A map $f : X -> Y$ is an *isometry* if
-  it perserves distances, that is,
+  it perserves distances, i.e.,
   $ d_X (x_1, x_2) = d_Y (f(x_1), f(x_2)) quad forall x_1, x_2 in X. $
 ]
 
@@ -918,7 +956,7 @@ Let $phi : G -> H$ be a group homomorphism.
 #definition[Group of Units][
   Let $(R, +, dot)$ be a ring.
   The *group of units* $U(R)$ is the set of all elements in $R$ that have
-  multiplicative inverses, that is
+  multiplicative inverses, i.e.,
   $
     U(R) =
     {a in R mid(|) exists a^(-1) in R : a dot a^(-1) = a^(-1) dot a = 1}.
