@@ -23,7 +23,23 @@
   memes: true,
 )
 
+#image("assets/image.png")
+
+#image("assets/image-3.png")
+
+#image("assets/image-4.png")
+
+#image("assets/image-5.png")
+
+2.4 exercises
+
+#image("assets/image-6.png")
+
 #image("/assets/image.png")
+
+find a cyclic infinite group
+
+find an infinite subset that is closed under operation but not inverse
 
 #theorem[
   If $p$ is the smallest prime index of $G$,
@@ -274,12 +290,15 @@ Let $(G, *)$ be a group.
 
 #theorem[Subgroup Criterion][
   A subset $H subset.eq G$ is a subgroup if and only if
-  + $H != emptyset$
-  + $a * b^(-1) in H quad forall a, b in H$
+  1. $H != emptyset$ (nonempty)
+  and
+  2. $a * b^(-1) in H quad forall a, b in H$
   or
-  + $H != emptyset$ (nonempty)
+  2. $a * b in H quad forall a, b in H$
+  + $a^(-1) in H quad forall a in H$
+  or
+  2. $a * b in H quad forall a, b in H$ (closed)
   + $|H| < oo$ (finite)
-  + $a * b in H quad forall a, b in H$ (closed)
 ]
 
 === Cyclic
@@ -293,6 +312,13 @@ Let $(G, *)$ be a group.
 #theorem[
   The cyclic subgroup $⟨a⟩ <= G$ is
   the smallest subgroup containing $a.$ 
+]
+
+#definition[Generating Set][
+  The subgroup
+  $⟨S⟩ = ⟨s, s^(-1) mid(|) s in S⟩ = {s^k mid(|) s in S, k in NN}$
+  consists of all _finite_ products of elements
+  in its *generating set* $S$ and their inverses.
 ]
 
 #definition[Generator][
@@ -485,6 +511,8 @@ Let $H$ be a subgroup of a group $G$.
 
   Similarly, the *right coset* is
   $ H g = {h * g mid(|) h in H}. $
+
+  An element of a coset is a *representative* for that coset.
 ]
 
 #theorem[
@@ -515,6 +543,29 @@ Let $H$ be a subgroup of a group $G$.
       + $G tilde.equiv #Zn <==> n #lt oo$
     ]
   }
+]
+
+#definition[Bounded Group][
+  $exists N in ZZ^+ : g^N = e space forall g in G$
+]
+
+#definition[Torsion Group][
+  $forall g in G space exists n in ZZ^+ : g^n = e$
+]
+
+#examples[
+  Finite groups. Bounded groups.
+]
+
+#definition[Torsion Subgroup][
+  If $G$ is abelian, its torsion subgroup is an abelian subgroup
+  $ T(G)
+  = {g in G : exists n in ZZ^+ : g^n = e}
+  = {g in G : |g| < oo}. $
+
+  Two special cases arise:
+  + If $T(G) = G$ then $G$ is a *torsion abelian group*.
+  + If $T(G) = {e}$ then $G$ is a *torsion-free abelian group*.
 ]
 
 #definition[Index][
@@ -645,14 +696,14 @@ Let $phi : G -> H$ be a group homomorphism.
 
 #definition[Kernel][
   The *kernel* of a group homorphism $phi$ is the set
-  $ ker phi = {g in G mid(|) phi(g) = id_H }. $
+  $ ker phi = phi^(-1)(id_H) = {g in G mid(|) phi(g) = id_H }. $
 ]
+
+Let $K = ker phi$.
 
 #theorem[
-  $ker phi = phi^(-1)(id_H) normal.eq G$
+  $K normal.eq G$
 ]
-
-Let $K = ker phi = phi^(-1)(id_H) normal.eq G$.
 
 #theorem[
   For every $g in G$ such that $phi(g) = h$ the entire fiber is
@@ -703,6 +754,19 @@ Let $K = ker phi = phi^(-1)(id_H) normal.eq G$.
   )
 ]]
 
+#definition[Natural Projection][
+  Let $N normal.eq G$.
+  The natural/canonical projection/homomorphism
+  is the map $pi : G -> G slash N$ defined by $pi(g) = g N$ for all $g in G$.
+]
+
+#theorem[
+  For $pi$ defined above:
+  + $pi$ is a homomorphism
+  + $pi$ is surjective, i.e., $pi(G) = G slash N$
+  + $ker pi = N$
+]
+
 === The Isomorphism Theorems
 
 Let $phi : G -> H$ be a group homomorphism.
@@ -729,8 +793,11 @@ Let $phi : G -> H$ be a group homomorphism.
 ]
 
 #lemma[
-  Let $H$ and $K$ be subgroups of $G$.
-  Then $H K <= G <==> H K = K H$.
+  If $A$ and $B$ are subgroups of $G$, then
+  $ A B <= G <==> A B = B A $
+
+  Furthermore, if $A$ and $B$ are finite, then
+  $ |A B| = (|A\||B|)/(|A inter B|). $
 ]
 
 #theorem[Second or Diamond or Parallelogram][
@@ -747,7 +814,7 @@ Let $phi : G -> H$ be a group homomorphism.
 
 === Transpositions
 
-#definition[Transposition][#image("assets/image-2.png")
+#definition[Transposition][
   A *transposition* of the elements $i, j in {1, ..., n}$
   is the permutation $tau_(i j)$ with the cycle notation $(i space j)$.
 ]
@@ -775,9 +842,9 @@ Let $phi : G -> H$ be a group homomorphism.
 
     [
       Hence,
-      - if $k$ is #even then $sgn(sigma) = +1$
+      + if $k$ is #even then $sgn(sigma) = +1$
         and $sigma$ is said to be even.
-      - if $k$ is #odd then $sgn(sigma) = -1$
+      + if $k$ is #odd then $sgn(sigma) = -1$
         and $sigma$ is said to be odd.
     ]
   }
@@ -843,7 +910,7 @@ Let $phi : G -> H$ be a group homomorphism.
   The number of $k$-cycles is
   $ choose(n, k) (k - 1)! = n!/((n-k)!k!) (k - 1)! = n!/((n-k)!k) $
   in $S_n$.
-  In $A_n$ there equally many if $k$ is odd,
+  In $A_n$ there are equally many if $k$ is odd,
   but $0$ if $k$ is even.
 ]
 
@@ -860,7 +927,7 @@ Let $phi : G -> H$ be a group homomorphism.
   @thm-index2 dictates that any subgroup of index $2$ is normal,
   so $H normal A_4$.
   Since the quotient group has order $|A_4 slash H| = [A_4 : H] = 2$,
-  $ (g H^2) = H space ==> space g^2 H space ==> space g^2 in H $
+  $ (g H)^2 = H space ==> space g^2 H = H space ==> space g^2 in H $
   for all $g in A_4$.
 
   There are 8 distinct 3-cycles in $A_4$.
@@ -931,7 +998,7 @@ Let $phi : G -> H$ be a group homomorphism.
 === Dihedral Groups
 
 #definition[Dihedral Group][
-  The *dihedral group* $D_n$ is
+  The *dihedral group* $D_n$ or $D_(2 n)$ is
   the group of symmetries (or equivalently rigid motions) of an $n$-gon.
   Its degree is $n$ and its order is $2n$.
 ]
