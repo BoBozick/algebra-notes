@@ -585,6 +585,59 @@ Let $H$ be a subgroup of a group $G$.
   }
 ]
 
+#definition[Direct Product][
+  The *direct product* $G_1 times G_2 times dots.h.c times G_n$
+  of the sets $G_1, G_2, ..., G_n$ with the operations $*_1, *_2, ..., *_n$
+  is the set of $n$-tuples with operation defined componentwise:
+  $
+    (g_1, ..., g_n) * (gamma_1, ..., gamma_n)
+    = (g_1 *_1 gamma_1, ..., g_n *_n gamma_n).
+  $
+
+  If there are infinitely many groups,
+  the $n$-tuples are replaced by sequences.
+]
+
+#theorem[
+  $
+    G slash G_i tilde.equiv
+    G_1 times dots.h.c times G_(i-1) times G_(i+1) times dots.h.c times G_n
+  $
+]
+
+#theorem[
+  $ |G_1 times G_2 times dots.h.c times G_n| = |G_1| |G_2| dots.h.c |G_n| $
+]
+
+#theorem[
+  Let $x_i = (id_1, ..., id_(i-1), g_i, id_(i+1), ..., n)$
+  for some $g_i in G_i$. Then
+  $
+    |x_1 x_2 dots.h.c x_n| =
+    lcm(|x_1|, |x_2|, ..., |x_n|).
+  $
+]
+
+#lemma[
+  Let 
+]
+
+#theorem[
+  Let $m, n in ZZ^+$.
+  Then $ZZ_m times ZZ_n tilde.equiv ZZ_(m n) <==> gcd(m, n) = 1.$
+]
+
+#proof[
+  We must prove both implications.
+
+  Consider the element $g = (1, 1) in ZZ_m times ZZ_n$
+  which has order $|g| = lcm(|1_m|, |1_n|) = lcm(m, n)$.
+
+  First assume $gcd(m , n) = 1$.
+  Then $|g| = m n$
+
+]
+
 #definition[Bounded Group][
   $exists N in ZZ^+ : g^N = e space forall g in G$
 ]
