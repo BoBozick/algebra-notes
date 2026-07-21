@@ -351,7 +351,7 @@ Let $(G, *)$ be a group.
 
 #theorem[
   The cyclic subgroup $⟨a⟩ <= G$ is
-  the smallest subgroup containing $a.$ 
+  the smallest subgroup containing $a.$
 ]
 
 #definition[Generating Set][
@@ -666,9 +666,11 @@ Let $H$ be a subgroup of a group $G$.
 
 #definition[Torsion Subgroup][
   If $G$ is abelian, its torsion subgroup is an abelian subgroup
-  $ T(G)
-  = {g in G : exists n in ZZ^+ : g^n = e}
-  = {g in G : |g| < oo}. $
+  $
+    T(G)
+    = {g in G : exists n in ZZ^+ : g^n = e}
+    = {g in G : |g| < oo}.
+  $
 
   Two special cases arise:
   + If $T(G) = G$ then $G$ is a *torsion abelian group*.
@@ -726,7 +728,7 @@ Let $H$ be a subgroup of a group $G$.
 
 #definition[Normal Subgroup][
   #let dist = v(1em)
-  
+
   The following are equivalent for a subgroup $H$ of $G$:
   + $H$ is a *normal subgroup* of $G$,
     denoted $H normal.eq G$.
@@ -755,7 +757,7 @@ Let $H$ be a subgroup of a group $G$.
 #note[
   Some authors use $normal$ exclusively for proper normal subgroups,
   while others use it for all normal subgroups.
-  
+
   The same principle holds for the subset sign $subset$.
 ]
 
@@ -770,7 +772,7 @@ Let $H$ be a subgroup of a group $G$.
   If $g in H$, then $g H = H = H g$.
   Otherwise, if $g in.not H$, then $g H = G slash H = H g$
   since $H union H g = G = H union g H$. // Not obvious!
-  
+
   Thus, $g H = H g$ for all $g$, so $H$ is a normal subgroup of $G$.
 ]
 
@@ -815,7 +817,7 @@ Let $K = ker phi$.
 #theorem[
   For every $g in G$ such that $phi(g) = h$ the entire fiber is
   $ phi^(-1)(h) = g K = K g. $
-  
+
   In words, the fibers of a homomorphism are the cosets of its kernel.
 ]
 
@@ -846,13 +848,13 @@ Let $K = ker phi$.
   #let ops = ($+$, $+$, $+ mod n$)
 
   #let contents = names.zip(syms, sets, ops)
-  
+
   #table(
     columns: 4,
     stroke: none,
     align: (right, left, left, left),
     inset: (x: 6pt, y: 7pt),
-    
+
     table.vline(x: 1, stroke: 0.5pt),
     table.hline(y: 1, stroke: 0.5pt),
 
@@ -909,7 +911,7 @@ Let $phi : G -> H$ be a group homomorphism.
 
 #theorem[Second or Diamond or Parallelogram][
   Let $S <= G$ and $N <= G$ be subgroups such that $S <= N_G (N)$. Then,
-  + $S N <= G$ #h(1em) #proof[See the above lemma.] 
+  + $S N <= G$ #h(1em) #proof[See the above lemma.]
   + $N normal.eq S N$
   + $S inter N normal.eq S$
   + $(S N) slash N tilde.equiv S slash (S inter N)$
@@ -962,7 +964,7 @@ Let $phi : G -> H$ be a group homomorphism.
   + $sigma = cycle(a_1, a_2, dots.h.c, a_m) = tau_1 tau_2 dots.h.c tau_k$
     for some $m <= n$ and $k$
   + $sigma^(-1)$ exists
-  
+
     #proof[
       $sigma$ is a bijection.
     ]
