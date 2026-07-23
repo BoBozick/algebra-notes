@@ -383,31 +383,34 @@ Let $(G, *)$ be a group.
   $ g gamma = a^m a^n = a^(m + n) = a^(n + m) = a^n a^m = gamma g. $
 ]
 
-== $ZZ_n$
+== $ZZ slash n ZZ$
+
+#theorem[
+  If $a c equiv b c space (mod n)$
+  then $a equiv b space (mod n / gcd(c, n))$.
+]
 
 Let $a$ and $n$ be positive integers and let $p$ be prime.
 
-#definition[$ZZ_n$][
+#definition[$ZZ slash n ZZ$][
   The *integers modulo $n$* is a set of congruence classes
-  $ ZZ_n = {[0], [1], ..., [n - 1]} $
+  $ ZZ slash n ZZ = ZZ slash (n)
+    = ZZ_n = {[0], [1], ..., [n - 1]} $
   that form an abelian group under $+$ and a monoid under $times$,
   together forming a ring with a group of units called
-  the *multiplicative group of integers modulo $n$*, denoted $U(n)$
-  and consisting of the integers coprime to $n$,
-  with inverse elements defined to satisfy
+  the *multiplicative group of integers modulo $n$*
+  $ U(n) = U(ZZ slash n ZZ) = (ZZ slash n ZZ)^times
+    = {[a] in ZZ slash n ZZ mid(|) gcd(a, n) = 1} $
+  with multiplicative inverses such that
   $a a^(-1) (equiv a^(-1) a) equiv 1 space (mod n).$
 ]
 
 #definition[Euler's Totient Function][
-  $
-    phi.alt (n)
-    = |U(n)|
-    = |{k in ZZ mid(|) 1 <= k <= n "and" gcd(n, k) = 1}|
-  $
+  $ phi.alt (n) = |U(n)| $
 ]
 
 #example[
-  $phi.alt (12) = |{1, 5, 7, 11}| = 4$
+  $phi.alt (12) = |{[1], [5], [7], [11]}| = 4$
 ]
 
 #theorem[Euler's][
@@ -416,7 +419,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 ]
 
 #proof[
-  The order of $a$ is $|U(n)| = phi.alt (n).$
+  By Lagrange's Theorem, the order $|[a]|$ of any element divides the order $|(ZZ slash n ZZ) ^times| = phi.alt(n)$ of its group, so $[a]^phi.alt(n) = [1]$.
 ]
 
 #lemma[
@@ -649,7 +652,6 @@ Let $H$ be a subgroup of a group $G$.
 
   First assume $gcd(m , n) = 1$.
   Then $|g| = m n$
-
 ]
 
 #definition[Bounded Group][
