@@ -529,11 +529,11 @@ Let $dot : G times X -> X$ be a group action.
 
 #definition[Stabilizer][
   The *stabilizer* of $x in X$ is the set
-  $ G_x = {g in G mid(|) g dot x = x}, $
+  $ G_x = {g in G chevron.l mid(|) g dot x = x}, $
   all elements in $G$ that fix $x$ under the group action.
 ]
 
-#theorem[
+#theorem[Orbit--Stabilizer][
   $|G dot x| = [G : G_x] = |G| / |G_x|$
 ]
 
@@ -708,7 +708,6 @@ Let $H$ be a subgroup of a group $G$.
   If $H normal.eq G$ then $[G : H] = |G| / |H| = |G slash H|.$
 ]
 
-
 #theorem[
   Let $(g, h) in G times H$ be a tuple of groups.
   If they have finite orders $|g| = r < oo$ and $|h| = s < oo$,
@@ -776,12 +775,22 @@ Let $H$ be a subgroup of a group $G$.
   Thus, $g H = H g$ for all $g$, so $H$ is a normal subgroup of $G$.
 ]
 
-#definition[Simple Group][
-  A group is *simple* if it has no normal nontrivial proper subgroup.
+#theorem[
+  If $H <= G$ and $K <= G$,
+  then $H K <= G$ if and only if $H K = K H$.
+]
+
+#corollary[
+  If $g H = H gamma$ for some $g, gamma in G$,
+  then $g = gamma$ and $g in N_G (H)$.
 ]
 
 #theorem[
   All subgroups of abelian groups are normal subgroups.
+]
+
+#definition[Simple Group][
+  A group is *simple* if it has no normal nontrivial proper subgroup.
 ]
 
 #definition[Fiber][
@@ -1151,7 +1160,6 @@ Let $phi : G -> H$ be a group homomorphism.
   + Multiplication distributes over addition:\
     for all $a, b, c in F$, $a dot (b + c) = a dot b + a dot c$.
 ]
-
 
 #examples[
   $QQ, RR, CC, RR(x), QQ(i),$ and $FF_p$ for prime $p$.
