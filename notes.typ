@@ -46,7 +46,7 @@ find an infinite subset that is closed under operation but not inverse
 === Set Theory
 
 #definition[Tuple][
-  A tuple (or sometimes *list*) is
+  A *tuple* (or sometimes *list*) is
   a finite, ordered collection of elements,
   possibly with repetitions.
 
@@ -121,10 +121,10 @@ find an infinite subset that is closed under operation but not inverse
   An automorphism of a set is called a *permutation*.
 ]
 
-=== Equivalance
+=== Equivalence
 
-#definition[Equivalance Relation][
-  An *equivalance relation* on a set $A$
+#definition[Equivalence Relation][
+  An *equivalence relation* on a set $A$
   is a relation $R subset.eq A times A$
   with the following properties:
   + / reflexive: $(a, a) in R wide forall a in A$
@@ -284,6 +284,11 @@ Let $(G, *)$ be a group.
   + $|H| < oo$ (finite)
 ]
 
+#definition[Maximal Subgroup][
+  A *maximal subgroup* $H$ of a group $G$ is a proper subgroup
+  such that no proper subgroup $K$ contains $H$ strictly.
+]
+
 === Cyclic
 
 #definition[Cyclic Subgroup][
@@ -337,13 +342,17 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 
 #definition[$ZZ slash n ZZ$][
   The *integers modulo $n$* is a set of congruence classes
-  $ ZZ slash n ZZ = ZZ slash (n)
-    = ZZ_n = {[0], [1], ..., [n - 1]} $
+  $
+    ZZ slash n ZZ = ZZ slash (n)
+    = ZZ_n = {[0], [1], ..., [n - 1]}
+  $
   that form an abelian group under $+$ and a monoid under $times$,
   together forming a ring with a group of units called
   the *multiplicative group of integers modulo $n$*
-  $ U(n) = U(ZZ slash n ZZ) = (ZZ slash n ZZ)^times
-    = {[a] in ZZ slash n ZZ mid(|) gcd(a, n) = 1} $
+  $
+    U(n) = U(ZZ slash n ZZ) = (ZZ slash n ZZ)^times
+    = {[a] in ZZ slash n ZZ mid(|) gcd(a, n) = 1}
+  $
   with multiplicative inverses such that
   $a a^(-1) (equiv a^(-1) a) equiv 1 space (mod n).$
 ]
@@ -362,7 +371,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 ]
 
 #proof[
-  By Lagrange's Theorem, the order $|[a]|$ of any element divides the order $|(ZZ slash n ZZ) ^times| = phi.alt(n)$ of its group, so $[a]^phi.alt(n) = [1]$.
+  By Lagrange's Theorem, the order $|[a]|$ of any element divides the order $|(ZZ slash n ZZ)^times| = phi.alt(n)$ of its group, so $[a]^phi.alt(n) = [1]$.
 ]
 
 #lemma[
@@ -474,9 +483,13 @@ Let $dot : G times X -> X$ be a group action.
 ]
 
 #definition[Stabilizer][
-  The *stabilizer* of $x in X$ is the set
-  $ G_x = {g in G chevron.l mid(|) g dot x = x}, $
+  The *stabilizer* of $x in G$ is the set
+  $ G_x = {g in G mid(|) g dot x = x}, $
   all elements in $G$ that fix $x$ under the group action.
+
+  The *stabilizer* of $X subset.eq G$ is the set
+  $ G_X = {g in G mid(|) g dot X = X}, $
+  all elements in $G$ that fix $X$ under the group action.
 ]
 
 #theorem[Orbit--Stabilizer][
@@ -528,12 +541,47 @@ Let $H$ be a subgroup of a group $G$.
   There are equally many left and right cosets of $H$ in $G$.
 ]
 
-=== Normalness
+=== Conjugation
 
 #definition[Conjugation][
   The *conjugation* by $a in G$ is an *inner automorphism* of $G$
   defined $g mapsto g a g^(-1)$.
 ]
+
+#definition[Conjugate][
+  Two subsets $X$ and $Y$ of $G$ are said to be *conjugate*
+  if there is some $g in G$ such that $X = g Y g^(-1)$,
+  i.e., if and only if they are in the same orbit of
+  $G$ acting on its subsets by conjugation.
+]
+
+#lemma[
+  Let $G$ be a group acting on a nonempty set $A$.
+  + The relation
+    $ a ~ b space "if and only if" space a = g dot b "for some" g in G $
+    is an equivalence relation.
+  + For each $a in A$, the number of elements in its
+    equivalence class (the orbit of $G$ containing $a$)
+    is $[G : G_a]$, the index of the stabilizer of $a$.
+  + The stabilizer of any subset $S subset.eq G$ under conjugation
+    is $G_S = N_G (S)$, the normalizer of $S$ in $G$.
+]
+
+#lemma[
+  $N_G ({s}) = C_G (s)$
+]
+
+#theorem[
+  The number of conjugates of a subset $S$ in a group $G$
+  is $[G : N_G (S)]$, the index of the normalizer of $S$.
+
+  In particular, the number of conjugates of an element $s$ of $G$
+  is $[G : C_G (s)]$, the index of the centralizer of $s$.
+]
+
+#image("assets/image-11.png")
+
+=== Normalness
 
 #definition[Normal Subgroup][
   #let dist = v(1em)
@@ -696,11 +744,21 @@ Let $H$ be a subgroup of a group $G$.
   + If $T(G) = {e}$ then $G$ is a *torsion-free abelian group*.
 ]
 
-=== Prime Divisors of Order
+=== Prime Divisors
+
+Let $G$ be a finite group,
+let $p$ be a prime, and
+let $k$ and $m$ be positive integers,
+where $m$ (if it exists) is chosen such that $p divides.not m$.
 
 #theorem[
   If $p$ is the smallest prime index of $G$,
   then all subgroups of order $p$ are normal.
+]
+
+#theorem[
+  If $p$ is the smallest prime that divides $|G|$,
+  then any subgroup of index $p$ is normal (if they exist).
 ]
 
 #theorem[Cauchy's or Prime Divisors][
@@ -709,40 +767,43 @@ Let $H$ be a subgroup of a group $G$.
 ]
 
 #theorem[Sylow's or Prime Power Divisors][
-  If $p^alpha$ is _prime power_ and divides $|G|$,
-  then $G$ must have a subgroup of order $p^alpha$.
+  If $p^k$ is _prime power_ and divides $|G|$,
+  then $G$ must have a subgroup of order $p^k$.
 ]
 
 #definition[$p$-group][
-  Let $G$ be a group,
-  let $p$ be a prime,
-  let $alpha$ be a positive integer, and
-  let $m$ be a positive integer such that $m divides.not alpha$.
-  + If $|G| = p^alpha$
+  + If $|G| = p^k$,
     then $G$ is a *$p$-group*.
-  + If $G$ is a $p$-group and a subgroup
+  + If $G$ is a $p$-group and a subgroup,
     then $G$ is a *$p$-subgroup*.
-  + If $|G| = p^alpha m$
-    then the $n_p (G)$ subgroups $"Syl"_p (G)$ of order $p^alpha$
-    are *Sylow $p$-subgroups*.
-    They are _maximal_ $p$-subgroups.
-]
+  + If $|G| = p^k m$,
+    then there are $n_p (G)$ maximal $p$-subgroups $"Syl"_p (G)$,
+    each a *Sylow $p$-subgroup* of order $p^k$.
+] <def-pgroup>
+
+Let $P in "Syl"_p (G)$.
 
 #lemma[
-  Let $P in "Syl"_p (G)$. If $Q$ is a $p$-subgroup of $G$,
-  then $ Q inter N_G (P) = Q inter P. $
+  If $Q$ is a $p$-subgroup of $G$,
+  then $Q inter N_G (P) = Q inter P.$
 ]
 
 #theorem[Sylow's][
-  Let $G$ be a group of order $p^alpha m$.
   + $"Syl"_p (G) != emptyset$
   + If $P$ is a Sylow $p$-subgroup and $Q$ is a $p$-subgroup,
     then $ exists g in G : Q <= g P g^(-1), $
     i.e., $Q$ is contained in some conjugate of $P$.
     In particular, any two Sylow $p$-subgroups of $G$ are conjugate in $G$.
+  + $n_p | m$, where $m$ is the index of the Sylow $p$-subgroup in $G$.
   + $n_p equiv 1 space (mod p)$.
   + $n_p = lr([G : N_G (P)])$ for every $P in "Syl"_p (G)$.
 ]
+
+#corollary[Cauchy's Theorem][
+  If $p divides |G|$ then there is a $g in G$ such that $|g| = p$.
+] <thm-cauchy>
+
+@thm-cauchy[-] says $G$ has a cyclical subgroup of order $|⟨g⟩| = p$.
 
 #corollary[
   Let $P <= G$ be a Sylow $p$-subgroup.
@@ -753,6 +814,26 @@ Let $H$ be a subgroup of a group $G$.
   + All subgroups generated by elements of $p$-power order are $p$-groups,
     i.e., if $X$ is any subset of $G$ such that $|x|$ is a power of $p$
     for all $x in X$, then $chevrons(X)$ is a $p$-group.
+]
+
+#example[
+  If $p divides.not |G|$,
+  the only Sylow $p$-subgroup is the trivial group.
+]
+
+#example[
+  If $|G| = p^k$,
+  the only Sylow $p$-subgroup is $G$ itself.
+]
+
+#example[
+  If $G$ is abelian, there is a unique Sylow $p$-subgroup for every each $p$.
+  This subgroup consists of all elements $x$ whose order is a power of $p$.
+  The subgroup is called the _$p$-primary component_ of $G$.
+]
+
+#theorem[
+  Sylow $p$-subgroups of the same group and order are isomorphic.
 ]
 
 == Homomorphisms
@@ -897,7 +978,7 @@ Let $phi : G -> H$ be a group homomorphism.
 ]
 
 #theorem[Second or Diamond or Parallelogram][
-  Let $S <= G$ and $N <= G$ be subgroups such that $S <= N_G (N)$. Then,
+  Let $S <= G$ and $N <= G$ be subgroups such that $S <= N_G (N)$.
   + $S N <= G$ #h(1em) #proof[See the above lemma.]
   + $N normal.eq S N$
   + $S inter N normal.eq S$
@@ -913,7 +994,6 @@ Let $phi : G -> H$ be a group homomorphism.
 
 #theorem[Third][
   Let $H normal.eq G$ and $K normal.eq G$ be subgroups such that $H <= K$.
-  Then:
   + $K slash H normal.eq G slash H$
   + $(G slash H) slash (K slash H) tilde.equiv G slash K$
 ]
@@ -1004,6 +1084,10 @@ Let $phi : G -> H$ be a group homomorphism.
   under the operation of composition
 ]
 
+#warning[
+  Symmetric groups are not to be confused with _symmetry_ groups.
+]
+
 #theorem[
   The automorphism group of a set is its symmetric group.
 ]
@@ -1015,9 +1099,7 @@ Let $phi : G -> H$ be a group homomorphism.
 #definition[Alternating Group][
   The *alternating group*
   $ A_n = {sigma in S_n mid(|) "sgn"(sigma) = 1} $
-  is the subgroup of $S_n$ consisting of all even permutations.
-
-  It has $n!/2$ elements for $n >= 2$.
+  is the subgroup of all ($n!/2$ if $n>= 2$) even permutations in $S_n$.
 ]
 
 #theorem[
@@ -1078,7 +1160,7 @@ Let $phi : G -> H$ be a group homomorphism.
   a rearrangment of the object preserving
   the arrangement of its sides and vertices
   as well as its distances and angles.
-]
+] <def-symmetry>
 
 #examples[
   Some types of symmetries:
@@ -1160,7 +1242,7 @@ Let $phi : G -> H$ be a group homomorphism.
 ]
 
 #lemma[
-  Let 
+  Let
 ]
 
 #theorem[
@@ -1174,7 +1256,7 @@ Let $phi : G -> H$ be a group homomorphism.
   Consider the element $g = (1, 1) in ZZ_m times ZZ_n$
   which has order $|g| = lcm(|1_m|, |1_n|) = lcm(m, n)$.
 
-  First assume $gcd(m , n) = 1$.
+  First assume $gcd(m, n) = 1$.
   Then $|g| = m n$
 ]
 
