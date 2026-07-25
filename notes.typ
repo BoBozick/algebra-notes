@@ -390,7 +390,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 
 === Commutation
 
-Let $X$ be any nonempty subset of $G$.
+Let $X$ be a nonempty subset of $G$.
 
 #definition[Centralizer][
   The *centralizer* of $X$ in $G$ is the set
@@ -568,7 +568,7 @@ Let $H$ be a subgroup of a group $G$.
 ]
 
 #lemma[
-  $N_G ({s}) = C_G (s)$
+  $N_G ({s}) = C_G ({s}) = C_G (s)$ by definition.
 ]
 
 #theorem[
