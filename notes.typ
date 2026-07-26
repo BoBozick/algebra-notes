@@ -707,16 +707,6 @@ Let $H$ be a subgroup of a group $G$.
   If $H normal.eq G$ then $[G : H] = |G| / |H| = |G slash H|.$
 ]
 
-#theorem[
-  Let $(g, h) in G times H$ be a tuple of groups.
-  If they have finite orders $|g| = r < oo$ and $|h| = s < oo$,
-  then $|(g, h)| = lcm(r, s)$.
-]
-
-#corollary[
-  $ZZ_m times ZZ_n tilde.equiv ZZ_(m n) space <==> space gcd(m, n) = 1$
-]
-
 === Torsion
 
 #definition[Bounded Group][
@@ -748,17 +738,13 @@ Let $H$ be a subgroup of a group $G$.
 
 Let $G$ be a finite group,
 let $p$ be a prime, and
-let $k$ and $m$ be positive integers,
+let $k$, $j$, and $m$ be positive integers,
 where $m$ (if it exists) is chosen such that $p divides.not m$.
 
 #theorem[
-  If $p$ is the smallest prime index of $G$,
-  then all subgroups of order $p$ are normal.
-]
-
-#theorem[
   If $p$ is the smallest prime that divides $|G|$,
-  then any subgroup of index $p$ is normal (if they exist).
+  then any subgroup of index $p$ (the existence of which is not guaranteed)
+  is normal.
 ]
 
 #theorem[Cauchy's or Prime Divisors][
@@ -767,8 +753,8 @@ where $m$ (if it exists) is chosen such that $p divides.not m$.
 ]
 
 #theorem[Sylow's or Prime Power Divisors][
-  If $p^k$ is _prime power_ and divides $|G|$,
-  then $G$ must have a subgroup of order $p^k$.
+  If $p^j$ is a _prime power_ and divides $|G|$,
+  then $G$ must have a subgroup of order $p^j$.
 ]
 
 #definition[$p$-group][
@@ -780,6 +766,13 @@ where $m$ (if it exists) is chosen such that $p divides.not m$.
     then there are $n_p (G)$ maximal $p$-subgroups $"Syl"_p (G)$,
     each a *Sylow $p$-subgroup* of order $p^k$.
 ] <def-pgroup>
+
+#definition[$p$-group, Generalized][
+  Let $G$ be possibly infinite.
+  + If every element of $G$ 
+  + A $p$-subgroup of $G$ is a *Sylow $p$-subgroup* if it is maximal,
+    i.e., not a proper subgroup of any other $p$-subgroup in $G$
+]
 
 Let $P in "Syl"_p (G)$.
 
@@ -794,7 +787,7 @@ Let $P in "Syl"_p (G)$.
     then $ exists g in G : Q <= g P g^(-1), $
     i.e., $Q$ is contained in some conjugate of $P$.
     In particular, any two Sylow $p$-subgroups of $G$ are conjugate in $G$.
-  + $n_p | m$, where $m$ is the index of the Sylow $p$-subgroup in $G$.
+  + $n_p | [G : P]$, where $[G : P] = m$.
   + $n_p equiv 1 space (mod p)$.
   + $n_p = lr([G : N_G (P)])$ for every $P in "Syl"_p (G)$.
 ]
@@ -827,13 +820,76 @@ Let $P in "Syl"_p (G)$.
 ]
 
 #example[
-  If $G$ is abelian, there is a unique Sylow $p$-subgroup for every each $p$.
-  This subgroup consists of all elements $x$ whose order is a power of $p$.
-  The subgroup is called the _$p$-primary component_ of $G$.
+  If $G$ is abelian, there is a unique Sylow $p$-subgroup for each $p$.
+  This subgroup, the _$p$-primary component_ of $G$,
+  consists of all elements $x$ whose order is a power of $p$.
 ]
 
 #theorem[
   Sylow $p$-subgroups of the same group and order are isomorphic.
+]
+
+=== Finitely Generated Abelian Groups
+
+#definition[Finitely Generated][
+
+]
+
+#definition[Free Abelian Group][
+
+]
+
+#theorem[Fundamental of Finitely Generated Abelian Groups][
+  Let $G$ be a finitely generated abelian group.
+  +
+]
+
+#definition[Invariant Factor Decomposition][
+
+]
+
+#corollary[
+
+]
+
+#theorem[
+
+]
+
+#definition[Elementary Divisor Decomposition][
+
+]
+
+
+#theorem[
+  Let $m, n in ZZ^+$.
+  Then $ZZ_m times ZZ_n tilde.equiv ZZ_(m n) <==> gcd(m, n) = 1.$
+]
+
+#proof[
+  We must prove both implications.
+
+  Consider the element $g = (1, 1) in ZZ_m times ZZ_n$
+  which has order $|g| = lcm(|1_m|, |1_n|) = lcm(m, n)$.
+
+  First assume $gcd(m, n) = 1$.
+  Then $|g| = m n$
+]
+
+#theorem[
+  
+]
+
+#tip[
+
+]
+
+#definition[Rank][
+
+]
+
+#definition[Exponent][
+
 ]
 
 == Homomorphisms
@@ -1208,8 +1264,8 @@ Let $phi : G -> H$ be a group homomorphism.
 
 === Direct
 
-#definition[Direct Product][
-  The *direct product* $G_1 times G_2 times dots.h.c times G_n$
+#definition[External Direct Product][
+  The *(external) direct product* $G_1 times G_2 times dots.h.c times G_n$
   of the sets $G_1, G_2, ..., G_n$ with the operations $*_1, *_2, ..., *_n$
   is the set of $n$-tuples with operation defined componentwise:
   $
@@ -1241,23 +1297,27 @@ Let $phi : G -> H$ be a group homomorphism.
   $
 ]
 
-#lemma[
-  Let
-]
+Let $H$ and $K$ be subgroups of a group.
 
-#theorem[
-  Let $m, n in ZZ^+$.
-  Then $ZZ_m times ZZ_n tilde.equiv ZZ_(m n) <==> gcd(m, n) = 1.$
+#lemma[
+  The number of distinct ways of writing
+  each element of $H K$ in the form $h k$ is $|H inter K|$
 ]
 
 #proof[
-  We must prove both implications.
+  // TODO
+]
 
-  Consider the element $g = (1, 1) in ZZ_m times ZZ_n$
-  which has order $|g| = lcm(|1_m|, |1_n|) = lcm(m, n)$.
+Assume $H$ and $K$ are trivially disjoint and normal in the group, i.e.,
+$ H, K normal.eq G space "and" space H inter K = {e}, $
 
-  First assume $gcd(m, n) = 1$.
-  Then $|g| = m n$
+#theorem[Recognition][
+  $H K tilde.equiv H times K$
+]
+
+#definition[Internal Direct Product][
+  The internal direct product of $H$ and $K$ is $H K$
+  (or, equivalently under the assumptions, $K H$).
 ]
 
 = Rings
@@ -1270,6 +1330,10 @@ Let $phi : G -> H$ be a group homomorphism.
   + $(R, dot)$ is a monoid with identity $1$.
   + Multiplication distributes over addition:\
     for all $a, b, c in R$, $a dot (b + c) = a dot b + a dot c$.
+]
+
+#definition[Division Ring][
+
 ]
 
 #definition[Group of Units][
