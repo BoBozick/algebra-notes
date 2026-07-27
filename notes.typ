@@ -844,6 +844,11 @@ Let $P in "Syl"_p (G)$.
   +
 ]
 
+#corollary[
+  If $n$ is the product of distinct primes,
+  then up to isomorphism the only abelian group of order $n$ is $C_n$.
+]
+
 #definition[Invariant Factor Decomposition][
 
 ]
@@ -1301,7 +1306,7 @@ Let $H$ and $K$ be subgroups of a group.
 
 #lemma[
   The number of distinct ways of writing
-  each element of $H K$ in the form $h k$ is $|H inter K|$
+  each element of $H K$ of the form $h k$ is $|H inter K|$.
 ]
 
 #proof[
@@ -1309,7 +1314,7 @@ Let $H$ and $K$ be subgroups of a group.
 ]
 
 Assume $H$ and $K$ are trivially disjoint and normal in the group, i.e.,
-$ H, K normal.eq G space "and" space H inter K = {e}, $
+$ H, K normal.eq G space "and" space H inter K = {e}. $
 
 #theorem[Recognition][
   $H K tilde.equiv H times K$
