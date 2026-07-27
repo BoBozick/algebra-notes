@@ -467,7 +467,14 @@ Let $dot : G times X -> X$ be a group action.
   all points in $X$ that $x$ can be moved to by the group action.
 ]
 
-#definition[Transitive][
+#theorem[
+  The set $X$ is partitioned by the set of its orbits under a group action.
+  The orbits are
+  the equivalence classes under the induced equivalence relation
+  $ x ~ y <==> exists g in G : g dot x = y <==> G dot x = G dot y. $
+]
+
+#definition[Transitive Action][
   The action of $G$ on $X$ is *transitive* if there is only one orbit, i.e.,
   given any pair $x, y in X$ there is some $g in G$ such that $g dot x = y$.
 ]
@@ -760,7 +767,7 @@ where $m$ (if it exists) is chosen such that $p divides.not m$.
 #definition[$p$-group][
   + If $|G| = p^k$,
     then $G$ is a *$p$-group*.
-  + If $G$ is a $p$-group and a subgroup,
+  + If $G$ Sylowis a $p$-group and a subgroup,
     then $G$ is a *$p$-subgroup*.
   + If $|G| = p^k m$,
     then there are $n_p (G)$ maximal $p$-subgroups $"Syl"_p (G)$,
@@ -1316,8 +1323,12 @@ Let $H$ and $K$ be subgroups of a group.
 Assume $H$ and $K$ are trivially disjoint and normal in the group, i.e.,
 $ H, K normal.eq G space "and" space H inter K = {e}. $
 
-#theorem[Recognition][
+#theorem[Recognition for Direct Products][
   $H K tilde.equiv H times K$
+]
+
+#corollary[
+  If $|H||K| = |G|$ then $G tilde.equiv H times K$.
 ]
 
 #definition[Internal Direct Product][
