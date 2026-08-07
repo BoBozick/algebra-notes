@@ -1448,6 +1448,15 @@ If the ring is an integral field, any element can be chosen as $a$.
   + $(a)$ is a *principal ideal* if $a$ is an element.
 ]
 
+#theorem[
+  An element $a in R$ is a non-unit if and only if $(a)$ is a proper ideal.
+]
+
+#theorem[Krull's][
+  Every proper ideal of a commutative ring with identity
+  is contained in at least one maximal ideal.
+]
+
 === Quotient Rings
 
 #theorem[
