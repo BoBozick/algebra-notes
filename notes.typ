@@ -387,7 +387,22 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
 ]
 
 #theorem[Chinese Remainder][
-  // TODO
+  Let $m_1, m_2, ..., m_n$ be pairwise coprime integers greater than $1$
+  and let $a_1, a_2, ..., a_n$ be integers.
+  Then the system
+
+  #context {
+    let width-diff = measure($tilde.equiv$).width - measure($dots.v$).width
+    $
+      x &tilde.equiv a_1 space (mod m_1) \
+      x &tilde.equiv a_2 space (mod m_2) \
+      &#h(width-diff / 2) dots.v \
+      x &tilde.equiv a_n space (mod m_n) \
+    $
+  }
+  has a unique solution modulo $m = m_1 m_2 dots.h.c m_n$ given by
+  $ x = a_1 M_1 y_1 + a_2 M_2 y_2 + ... + a_n M_n y_n, $
+  where $M_i = m / m_i$ and $y_i = M_i^(-1) space (mod m_i)$.
 ]
 
 == Families
