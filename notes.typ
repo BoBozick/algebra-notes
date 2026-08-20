@@ -35,8 +35,6 @@
 
 #image("assets/image-6.png")
 
-#image("/assets/image.png")
-
 find an infinite subset that is closed under operation but not inverse
 
 = Sets
