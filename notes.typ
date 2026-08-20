@@ -1191,7 +1191,7 @@ Let $phi : G -> H$ be a group homomorphism.
 
 #theorem[
   The number of $k$-cycles is
-  $ choose(n, k) (k - 1)! = n!/((n-k)!k!) (k - 1)! = n!/((n-k)!k) $
+  $ binom(n, k) (k - 1)! = n!/((n-k)!k!) (k - 1)! = n!/((n-k)!k) $
   in $S_n$.
   In $A_n$ there are equally many if $k$ is odd,
   but $0$ if $k$ is even.
@@ -1367,8 +1367,35 @@ $ H, K normal.eq G space "and" space H inter K = {e}. $
     for all $a, b, c in R$, $a dot (b + c) = a dot b + a dot c$.
 ]
 
+#note[
+  Possibly $1 = 0$.
+]
+
+#remark[
+  Historically, a ring was sometimes defined without
+  the requirement of a multiplicative identity.
+
+  Authors who follow either convention the following terms to refer to
+  objects satisfying the other convention:
+  - to include a requirement for a multiplicative identity: \
+    "unital~ring", "unitary~ring", "unit~ring", "ring~with~unity",
+    "ring~with~identity", "ring with a unit", or "ring~with~1".
+  - to omit a requirement for a multiplicative identity: \
+    "rng" or "pseudo#sym.hyph.nobreak;ring",
+    although the latter may be confusing because it also has other meanings.
+]
+
 Let $(R, +, dot)$ be a ring.
 Note that $R$ by definition must be nonempty.
+
+#definition[Subring][
+  A subset $S subset.eq R$ is a *subring* of $R$ if it is a ring.
+]
+
+#theorem[Subring Criterion][
+  A subset $S subset.eq R$ is a subring if and only if
+  it is closed under subtraction and multiplication.
+]
 
 #definition[Zero Divisor][
   A nonzero element $a in R$ for which there is some nonzero element $b in R$
@@ -1428,6 +1455,11 @@ Note that $R$ by definition must be nonempty.
     that allows a form of the division algorithm.
   / Field:
     is a commutative division ring.
+]
+
+#definition[Noetherian Ring][
+  A commutative ring $R$ with $1$ is *Noetherian*
+  if every ideal of $R$ is finitely generated.
 ]
 
 #image("assets/image-10.png")
@@ -1560,6 +1592,28 @@ Assume $R$ is commutative.
 #theorem[
   In a Unique Factorization Domain,
   a nonzero element is prime if and only if it is irreducible.
+]
+
+#theorem[
+  Let $R$ be a commutative ring.
+  If $a, b in R$ are nonzero elements which generate a principal ideal
+  $(a, b) = (d)$, then $d$ is a greatest common divider of $a$ and $b$.
+]
+
+Let $R$ be a Principal Ideal Domain.
+
+#theorem[Bézout's Identity][
+  If $a, b in R$, then any greatest common divisor $d = gcd(a, b)$ satisfies
+  $ a x + b y = d quad "for some" x, y in R. $
+]
+
+#definition[Coprime][
+  Two elements are *coprime* if all their common factors are units.
+]
+
+#corollary[
+  Two elements $a, b in R$ are coprime if and only if
+  $ a x + b y = 1 quad "for some" x, y in R. $
 ]
 
 = Fields
