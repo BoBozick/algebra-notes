@@ -653,17 +653,6 @@ Let $H$ be a subgroup of a group $G$.
   Every subgroup of index $2$ is normal.
 ] <thm-index2>
 
-#proof[
-  Let $H <= G$ be the subgroup such that $[G : H] = 2$.
-  We wish to show that $g H = H g$ for all $g in G$.
-
-  If $g in H$, then $g H = H = H g$.
-  Otherwise, if $g in.not H$, then $g H = G slash H = H g$
-  since $H union H g = G = H union g H$. // Not obvious!
-
-  Thus, $g H = H g$ for all $g$, so $H$ is a normal subgroup of $G$.
-]
-
 #theorem[
   If $H <= G$ and $K <= G$,
   then $H K <= G$ if and only if $H K = K H$.
