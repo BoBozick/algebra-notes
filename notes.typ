@@ -121,7 +121,7 @@ find an infinite subset that is closed under operation but not inverse
 
 === Equivalence
 
-#definition[Equivalence Relation][
+#definition[Equivalence relation][
   An *equivalence relation* on a set $A$
   is a relation $R subset.eq A times A$
   with the following properties:
@@ -134,7 +134,7 @@ find an infinite subset that is closed under operation but not inverse
 
 Let $R$ be an equivalence relation on a set $A$.
 
-#definition[Equivalence Class][
+#definition[Equivalence class][
   The *equivalence class* of an element $a in A$
   $ [a] = dash(a) = {b in A mid(|) b tilde a} $
   is the set of all elements related to it.
@@ -144,7 +144,7 @@ Let $R$ be an equivalence relation on a set $A$.
   The modulo $m$ congruence class $[a] = {a + k m mid(|) k in ZZ}.$
 ]
 
-#definition[Quotient Set][
+#definition[Quotient set][
   The *quotient set* of $A$ by $R$
   $ A slash R = {[a] mid(|) a in A} $
   is the set of all equivalence classes induced by the relation.
@@ -160,7 +160,7 @@ Let $R$ be an equivalence relation on a set $A$.
   The quotient set $A slash R$ forms a partition of $A$.
 ]
 
-#definition[Quotient Map][
+#definition[Quotient map][
   A *quotient map* is a map $pi : A -> A slash R$ defined by
   $ pi(a) = [a]. $
 ]
@@ -175,7 +175,7 @@ Let $R$ be an equivalence relation on a set $A$.
 
 Let $a$ and $b$ be integers with $gcd(a, b) = d$.
 
-#lemma[Bézout's Identity][
+#lemma[Bézout's identity][
   There exist integers $x$ and $y$ such that $a x + b y = d$.
 ]
 
@@ -183,7 +183,7 @@ Let $a$ and $b$ be integers with $gcd(a, b) = d$.
   If $p$ is prime and $p divides a b$, then $p divides a$ or $p divides b$.
 ]
 
-#theorem[Solvability Condition][
+#theorem[Solvability condition][
   The linear Diophantine equation $a x + b y = c$ has (infinitely many)
   solutions if and only if $d divides c.$
 ]
@@ -193,7 +193,7 @@ Let $a$ and $b$ be integers with $gcd(a, b) = d$.
   $ x = x_0 + t b / d, quad y = y_0 - t a / d, quad "for" t in ZZ. $
 ]
 
-#theorem[Euclidean Algorithm][
+#theorem[Euclidean algorithm][
   Let $a$ and $b$ be non-negative integers with $a >= b$.
   Then there exist unique integers $q$ and $r$ such that
   $ a = q b + r, quad 0 <= r < b. $
@@ -269,27 +269,34 @@ Let $(G, *)$ be a group.
   under the operation inherited from $G$.
 ]
 
-#theorem[Subgroup Criterion][
+#theorem[Subgroup criterion][
   A subset $H subset.eq G$ is a subgroup if and only if
-  1. $H != emptyset$ (nonempty)
+  + $H != emptyset$
+    (nonempty)
   and
-  2. $a * b^(-1) in H quad forall a, b in H$
+  #set enum(start: 2)
+  + $a * b^(-1) in H quad forall a, b in H$
+    (closed under operation with inverse)
   or
-  2. $a * b in H quad forall a, b in H$
+  + $a * b in H quad forall a, b in H$
+    (closed under operation)
   + $a^(-1) in H quad forall a in H$
+    (closed under inverse)
   or
-  2. $a * b in H quad forall a, b in H$ (closed)
-  + $|H| < oo$ (finite)
+  + $a * b in H quad forall a, b in H$
+    (closed under operation)
+  + $|H| < oo$
+    (finite)
 ]
 
-#definition[Maximal Subgroup][
+#definition[Maximal subgroup][
   A *maximal subgroup* $H$ of a group $G$ is a proper subgroup
   such that no proper subgroup $K$ contains $H$ strictly.
 ]
 
 === Cyclic
 
-#definition[Cyclic Subgroup][
+#definition[Cyclic subgroup][
   For every $a in G$, the set
   $ ⟨a⟩ = {a^k mid(|) k in ZZ} $
   forms a *cyclic subgroup* of $G$.
@@ -300,7 +307,7 @@ Let $(G, *)$ be a group.
   the smallest subgroup containing $a.$
 ]
 
-#definition[Generating Set][
+#definition[Generating set][
   The subgroup
   $⟨S⟩ = ⟨s, s^(-1) mid(|) s in S⟩ = {s^k mid(|) s in S, k in NN}$
   consists of all _finite_ products of elements
@@ -311,7 +318,7 @@ Let $(G, *)$ be a group.
   An element $a in G$ is a *generator* of $G$ if $⟨a⟩ = G$.
 ]
 
-#definition[Cyclic Group][
+#definition[Cyclic group][
   We say $G$ is a *cyclic group* if it contains a *generator* of itself.
 ]
 
@@ -355,7 +362,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   $a a^(-1) (equiv a^(-1) a) equiv 1 space (mod n).$
 ]
 
-#definition[Euler's Totient Function][
+#definition[Euler's totient function][
   $ phi.alt (n) = |U(n)| $
 ]
 
@@ -376,7 +383,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   $phi.alt(p) = p - 1$
 ]
 
-#theorem[Fermat's Little][
+#theorem[Fermat's little][
   If $a$ and $p$ are coprime, then
   $ a^(p - 1) equiv 1 quad (mod p). $
 
@@ -384,7 +391,7 @@ Let $a$ and $n$ be positive integers and let $p$ be prime.
   $ a^p equiv a quad (mod p). $
 ]
 
-#theorem[Chinese Remainder][
+#theorem[Chinese remainder][
   Let $m_1, m_2, ..., m_n$ be pairwise coprime integers greater than $1$
   and let $a_1, a_2, ..., a_n$ be integers.
   Then the system
@@ -466,7 +473,7 @@ Let $X$ be a nonempty subset of $G$.
 
 === Group Action
 
-#definition[Group Action][
+#definition[Group action][
   A map $dot : G times X -> X$ is a *(left) group action* if it satisfies:
   + (Identity)
     $e dot x = x$
@@ -491,7 +498,7 @@ Let $dot : G times X -> X$ be a group action.
   $ x ~ y <==> exists g in G : g dot x = y <==> G dot x = G dot y. $
 ]
 
-#definition[Transitive Action][
+#definition[Transitive action][
   The action of $G$ on $X$ is *transitive* if there is only one orbit, i.e.,
   given any pair $x, y in X$ there is some $g in G$ such that $g dot x = y$.
 ]
@@ -520,7 +527,7 @@ Let $dot : G times X -> X$ be a group action.
   $|G dot x| = [G : G_x] = |G| / |G_x|$
 ]
 
-#definition[Fixed Point Set][
+#definition[Fixed point set][
   The *fixed point set* of $g in G$ is the set
   $ X^g = {x in X mid(|) g dot x = x}, $
   all elements in $X$ that are fixed under $g$.
@@ -607,7 +614,7 @@ Let $H$ be a subgroup of a group $G$.
 
 === Normalness
 
-#definition[Normal Subgroup][
+#definition[Normal subgroup][
   #let dist = v(1em)
 
   The following are equivalent for a subgroup $H$ of $G$:
@@ -671,7 +678,7 @@ Let $H$ be a subgroup of a group $G$.
   All subgroups of abelian groups are normal subgroups.
 ]
 
-#definition[Simple Group][
+#definition[Simple group][
   A group is *simple* if it has no normal nontrivial proper subgroup.
 ]
 
@@ -717,7 +724,7 @@ Let $H$ be a subgroup of a group $G$.
   + is cyclic
 ]
 
-#theorem[Lagrange's, Generalized][
+#theorem[Lagrange's, generalized][
   Regardless of whether $G$ is finite or infinite,
   $ |G| = [G : H] |H|. $
 ]
@@ -733,11 +740,11 @@ Let $H$ be a subgroup of a group $G$.
 
 === Torsion
 
-#definition[Bounded Group][
+#definition[Bounded group][
   $exists N in ZZ^+ : g^N = e space forall g in G$
 ]
 
-#definition[Torsion Group][
+#definition[Torsion group][
   $forall g in G space exists n in ZZ^+ : g^n = e$
 ]
 
@@ -745,7 +752,7 @@ Let $H$ be a subgroup of a group $G$.
   Finite groups. Bounded groups.
 ]
 
-#definition[Torsion Subgroup][
+#definition[Torsion subgroup][
   If $G$ is abelian, its torsion subgroup is an abelian subgroup
   $
     T(G)
@@ -771,12 +778,12 @@ where $m$ (if it exists) is chosen such that $p divides.not m$.
   is normal.
 ]
 
-#theorem[Cauchy's or Prime Divisors][
+#theorem[Cauchy's, or prime divisors][
   If $p$ is a prime that divides $|G|$,
   then $G$ must have a subgroup _and an element_ of order $p$.
 ]
 
-#theorem[Sylow's or Prime Power Divisors][
+#theorem[Sylow's, or prime power divisors][
   If $p^j$ is a _prime power_ and divides $|G|$,
   then $G$ must have a subgroup of order $p^j$.
 ]
@@ -791,7 +798,7 @@ where $m$ (if it exists) is chosen such that $p divides.not m$.
     each a *Sylow $p$-subgroup* of order $p^k$.
 ] <def-pgroup>
 
-#definition[$p$-group, Generalized][
+#definition[$p$-group, generalized][
   Let $G$ be possibly infinite.
   + If every element of $G$ 
   + A $p$-subgroup of $G$ is a *Sylow $p$-subgroup* if it is maximal,
@@ -816,7 +823,7 @@ Let $P in "Syl"_p (G)$.
   + $n_p = lr([G : N_G (P)])$ for every $P in "Syl"_p (G)$.
 ]
 
-#corollary[Cauchy's Theorem][
+#corollary[Cauchy's theorem][
   If $p divides |G|$ then there is a $g in G$ such that $|g| = p$.
 ] <thm-cauchy>
 
@@ -855,15 +862,15 @@ Let $P in "Syl"_p (G)$.
 
 === Finitely Generated Abelian Groups
 
-#definition[Finitely Generated][
+#definition[Finitely generated][
 
 ]
 
-#definition[Free Abelian Group][
+#definition[Free abelian group][
 
 ]
 
-#theorem[Fundamental of Finitely Generated Abelian Groups][
+#theorem[Fundamental of finitely generated abelian groups][
   Let $G$ be a finitely generated abelian group.
   +
 ]
@@ -873,7 +880,7 @@ Let $P in "Syl"_p (G)$.
   then up to isomorphism the only abelian group of order $n$ is $C_n$.
 ]
 
-#definition[Invariant Factor Decomposition][
+#definition[Invariant factor decomposition][
 
 ]
 
@@ -885,7 +892,7 @@ Let $P in "Syl"_p (G)$.
 
 ]
 
-#definition[Elementary Divisor Decomposition][
+#definition[Elementary divisor decomposition][
 
 ]
 
@@ -934,7 +941,7 @@ Let $P in "Syl"_p (G)$.
 
 Let $phi : G -> H$ be a group homomorphism.
 
-#definition[Fiber of Group][
+#definition[Fiber of group][
   The *fiber* of $phi$ over some $h in H$ is
   $ phi^(-1)(h) = {g in G mid(|) phi(g) = h}. $
 ]
@@ -962,7 +969,7 @@ Let $K = ker phi$.
   In words, the fibers of a homomorphism are the cosets of its kernel.
 ]
 
-#definition[Quotient Group, Alternative][
+#definition[Quotient group, alternative][
   The quotient group is
   $ G slash K = {phi^(-1)(h) mid(|) h in phi(G)}, $
   the set of all nonempty fibers of $phi$.
@@ -970,7 +977,7 @@ Let $K = ker phi$.
   If $phi$ is surjective, then $phi(G) = H$ and all fibers are nonempty.
 ]
 
-#definition[Quotient Group][
+#definition[Quotient group][
   Let $N normal.eq G$.
   The *quotient group* or *factor group* is
   $ G slash N = {g N mid(|) g in G} (= {N g mid(|) g in G}), $
@@ -1006,7 +1013,7 @@ Let $K = ker phi$.
 
 === Natural Projections
 
-#definition[Natural Projection][
+#definition[Natural projection][
   Let $N normal.eq G$.
   The natural/canonical projection/homomorphism
   is the map $pi : G -> G slash N$ defined by $pi(g) = g N$ for all $g in G$.
@@ -1030,7 +1037,7 @@ Let $K = ker phi$.
 
 Let $phi : G -> H$ be a group homomorphism.
 
-#theorem[First or Fundamental of Homomorphisms][
+#theorem[First, or fundamental of homomorphisms][
   + $ker phi normal.eq G$
   + $phi(G) tilde.equiv G slash ker phi$
   + $phi(G) <= H$
@@ -1062,7 +1069,7 @@ Let $phi : G -> H$ be a group homomorphism.
   Note that $A B$ is not necessarily a group.
 ]
 
-#theorem[Second or Diamond or Parallelogram][
+#theorem[Second, or diamond, or parallelogram][
   Let $S <= G$ and $N <= G$ be subgroups such that $S <= N_G (N)$.
   + $S N <= G$ #h(1em) #proof[See the above lemma.]
   + $N normal.eq S N$
@@ -1083,7 +1090,7 @@ Let $phi : G -> H$ be a group homomorphism.
   + $(G slash H) slash (K slash H) tilde.equiv G slash K$
 ]
 
-#theorem[Fourth or Lattice][
+#theorem[Fourth, or lattice][
   #image("assets/image-7.png")
 
   #image("assets/image-8.png")
@@ -1111,7 +1118,7 @@ Let $phi : G -> H$ be a group homomorphism.
   $|sigma| = "length"(sigma)$
 ]
 
-#definition[Sign of a Permutation][
+#definition[Sign of a permutation][
   Let $k$ be the number of transpositions in
   any decomposition of a $(k + 1)$-cycle $sigma in S_n$,
   The *sign* of $sigma$ is $(-1)^k$.
@@ -1129,7 +1136,7 @@ Let $phi : G -> H$ be a group homomorphism.
   }
 ]
 
-#theorem[Permutation Inverse][
+#theorem[Permutation inverse][
   Let $sigma in S_n$ be a permutation.
   + $sigma = cycle(a_1, a_2, dots.h.c, a_m) = tau_1 tau_2 dots.h.c tau_k$
     for some $m <= n$ and $k$
@@ -1154,14 +1161,14 @@ Let $phi : G -> H$ be a group homomorphism.
   + $sgn(sigma^(-1)) = sgn(sigma) = (-1)^k$
 ]
 
-#definition[Fixed Point)][
+#definition[Fixed point)][
   A *fixed point* is invariant under
   a transformation such as a permutation.
 ]
 
 === Symmetric Groups
 
-#definition[Symmetric Group][
+#definition[Symmetric group][
   The *symmetric group* of the finite set $X = {1, 2, ..., n}$ is
   $ S_n = {sigma : X -> X mid(|) sigma "is bijective"} $
   and consists of $n!$ permutations,
@@ -1177,11 +1184,11 @@ Let $phi : G -> H$ be a group homomorphism.
   The automorphism group of a set is its symmetric group.
 ]
 
-#definition[Permutation Group][
+#definition[Permutation group][
   A subgroup of a symmetric group $S_n$ is a *permutation group*.
 ]
 
-#definition[Alternating Group][
+#definition[Alternating group][
   The *alternating group*
   $ A_n = {sigma in S_n mid(|) "sgn"(sigma) = 1} $
   is the subgroup of all ($n!/2$ if $n>= 2$) even permutations in $S_n$.
@@ -1264,7 +1271,7 @@ Let $phi : G -> H$ be a group homomorphism.
 ]
 
 // Im unsure of the following
-#definition[Rigid Motion][
+#definition[Rigid motion][
   A *rigid motion* is a map $f : RR^n -> RR^n$ such that
   $ norm(u - v) = norm(f(u) - f(v)) quad forall u, v in RR^n. $
 
@@ -1278,7 +1285,7 @@ Let $phi : G -> H$ be a group homomorphism.
 
 === Dihedral Groups
 
-#definition[Dihedral Group][
+#definition[Dihedral group][
   The *dihedral group* $D_n$ or $D_(2 n)$ is
   the group of symmetries (or equivalently rigid motions) of an $n$-gon.
   Its degree is $n$ and its order is $2n$.
@@ -1293,7 +1300,7 @@ Let $phi : G -> H$ be a group homomorphism.
 
 === Direct
 
-#definition[External Direct Product][
+#definition[External direct product][
   The *(external) direct product* $G_1 times G_2 times dots.h.c times G_n$
   of the sets $G_1, G_2, ..., G_n$ with the operations $*_1, *_2, ..., *_n$
   is the set of $n$-tuples with operation defined componentwise:
@@ -1340,7 +1347,7 @@ Let $H$ and $K$ be subgroups of a group.
 Assume $H$ and $K$ are trivially disjoint and normal in the group, i.e.,
 $ H, K normal.eq G space "and" space H inter K = {e}. $
 
-#theorem[Recognition for Direct Products][
+#theorem[Recognition for direct products][
   $H K tilde.equiv H times K$
 ]
 
@@ -1348,7 +1355,7 @@ $ H, K normal.eq G space "and" space H inter K = {e}. $
   If $|H||K| = |G|$ then $G tilde.equiv H times K$.
 ]
 
-#definition[Internal Direct Product][
+#definition[Internal direct product][
   The internal direct product of $H$ and $K$ is $H K$
   (or, equivalently under the assumptions, $K H$).
 ]
@@ -1390,12 +1397,12 @@ Note that $R$ by definition must be nonempty.
   A subset $S subset.eq R$ is a *subring* of $R$ if it is a ring.
 ]
 
-#theorem[Subring Criterion][
+#theorem[Subring criterion][
   A subset $S subset.eq R$ is a subring if and only if
   it is closed under subtraction and multiplication.
 ]
 
-#definition[Zero Divisor][
+#definition[Zero divisor][
   A nonzero element $a in R$ for which there is some nonzero element $b in R$
   such that $a b = 0$ or $b a = 0$ is a *zero divisor*.
 ]
@@ -1414,19 +1421,19 @@ Note that $R$ by definition must be nonempty.
 
 === Miscellaneous Rings
 
-#definition[Trivial Ring][
+#definition[Trivial ring][
   A *trivial ring* is defined by $1 = 0$ or $a dot b = 0$ for all $a, b in R$.
   In particular, $R$ is the *zero ring* if $R = {0}$ or hence $|R| = 1$
 ]
 
-#definition[Division Ring][
+#definition[Division ring][
   A *division ring* (or skew field) is a ring in which
   every nonzero element is a unit.
 ]
 
 === Commutative Rings
 
-#definition[Commutative Rings][
+#definition[Commutative rings][
   / Commutative ring:
     is a ring with commutative multiplication
     (forming an abelian group).
@@ -1455,14 +1462,30 @@ Note that $R$ by definition must be nonempty.
     is a commutative division ring.
 ]
 
-#definition[Noetherian Ring][
+#definition[Noetherian ring][
   A commutative ring $R$ with $1$ is *Noetherian*
   if every ideal of $R$ is finitely generated.
 ]
 
+#theorem[Ring class inclusions][
+  $
+    "rngs"
+    &supset "rings" \
+    &supset "commutative rings" \
+    &supset "integral domains" \
+    &supset "integrally closed domains" \
+    &supset "GCD domains" \
+    &supset "unique factorization domains (UFDs)" \
+    &supset "principal ideal domains (PIDs)" \
+    &supset "Euclidean domains" \
+    &supset "fields" \
+    &supset "algebraically closed fields"
+  $
+]
+
 #image("assets/image-10.png")
 
-#theorem[Fundamental of Arithmetic][
+#theorem[Fundamental of arithmetic][
   The integers $ZZ$ are a Unique Factorization Domain.
 ]
 
@@ -1522,14 +1545,14 @@ If the ring is an integral field, any element can be chosen as $a$.
   then $I$ is an ideal of $R$.
 ]
 
-#definition[Quotient Ring][
+#definition[Quotient ring][
   The *quotient ring* of a ring $R$ by an ideal $I$ is $R slash I$
   with the operations as defined above.
 ]
 
 === Maximal and Prime Ideals
 
-#definition[Maximal Ideal][
+#definition[Maximal ideal][
   An ideal $M$ in a ring $S$ is *maximal* if $M != S$ and
   the only ideals containing $M$ are $M$ and $S$.
 ]
@@ -1542,7 +1565,7 @@ Let $I$ be an ideal.
 
 Assume $R$ is commutative.
 
-#definition[Prime Ideal][
+#definition[Prime ideal][
   An ideal $P$ is a *prime ideal* if $P != R$
   and whenever $a b in P$ for some $a, b in R$,
   then $a in P$ or $b in P$.
@@ -1556,6 +1579,20 @@ Assume $R$ is commutative.
 ]
 
 == Polynomial Rings
+
+#theorem[
+  #set enum(
+    number-align: start,
+    numbering: n => (sym.checkmark, sym.crossmark).at(n - 1),
+  )
+
+  Inheritance from $R$ for the polynonimal ring $R[x]$:
+  + integral domain, UFD, Noetherian
+  + field, PID, Euclidean domain, Dedekind
+
+  Inheritance for the ring of formal power series $R[x]$
+  is very similar.
+]
 
 == ?
 
@@ -1600,7 +1637,7 @@ Assume $R$ is commutative.
 
 Let $R$ be a Principal Ideal Domain.
 
-#theorem[Bézout's Identity][
+#theorem[Bézout's identity][
   If $a, b in R$, then any greatest common divisor $d = gcd(a, b)$ satisfies
   $ a x + b y = d quad "for some" x, y in R. $
 ]
@@ -1639,7 +1676,7 @@ Let $R$ be a Principal Ideal Domain.
 
 == Vector Spaces
 
-#definition[Vector Space][
+#definition[Vector space][
   A vector space over a field $F$ is a set $V$ with two operations:
   - Vector addition $+ : V times V -> V$
   - Scalar multiplication $dot : F times V -> V$
