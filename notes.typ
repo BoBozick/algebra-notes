@@ -1433,10 +1433,19 @@ Note that $R$ by definition must be nonempty.
   A element $a in R$ with a multiplicative inverse $a^(-1)$
   such that $a a^(-1) = a^(-1) a = 1$
   (the first equality follows directly if $R$ is finite or commutative)
-  is said to be a *unit*. The set of all units
+  is said to be a *unit*.
+  
+  The set of all units
   $ R^times = U(R) =
     {a in R mid(|) exists a^(-1) in R : a dot a^(-1) = a^(-1) dot a = 1}. $
   forms a group under multiplication called the *group of units*.
+]
+
+#theorem[
+  A finite subgroup of the multiplicative gruop of a field is cyclic.
+  In  particular, if $F$ is a finite field,
+  then the multiplicative group $F^times$ of nonzero elements of $F$
+  is a cyclic group. 
 ]
 
 == Types
@@ -1600,6 +1609,20 @@ Assume $R$ is commutative.
 
 == Polynomial Rings
 
+#definition[Primitive][
+  Let $R$ be an integral domain.
+  A polynomial in $R[x]$ is *primitive*
+  if its coefficients have no common nonunit divisor.
+]
+
+#lemma[Gauss's][
+  Let $R$ be a UFD with a field of fractions $F$.
+
+  The product of two primitive polynomials is also primitive.
+  Consequently, a primitive polynomial in $R[x]$ is irreducible
+  in $R[x]$ if and only if it is irreducible in $F[x]$.
+]
+
 #theorem[
   #set enum(
     number-align: start,
@@ -1614,12 +1637,52 @@ Assume $R$ is commutative.
   is very similar.
 ]
 
+Let $F$ be a field.
+
 #theorem[
-  If $F$ is a field,
-  then the polynomial ring $F[x]$ is a Euclidean domain
-  (with Euclidean valuation $v(p) = deg(p)$).
+  $F[x]$ is a Euclidean domain.
   
-  Consequently, $F[x]$ is also a PID.
+  Its Euclidean valuation is $v(p) = deg(p)$).
+]
+
+#corollary[
+  $F[x]$ is a PID.
+]
+
+Let $f(x) = a_n x^n + dots.h.c + a_1 x + a_0 in F[x]$.
+
+#theorem[Eisenstein's criterion][
+  If there is a prime ideal $P$ of $F$ such that
+  + $a_n in.not P$
+  + $a_i in P$ for all $i < n$
+  + $a_0 in.not P^2$
+  then $f(x)$ is irreducible over $F$.
+]
+
+#corollary[
+  If $F = ZZ$ and there is a prime $p$ such that
+  + $p divides.not a_n$
+  + $p | a_i$ for all $i < n$
+  + $p^2 divides.not a_0$
+  then $f(x)$ is irreducible over $QQ$ (and thus also $ZZ$).
+]
+
+#theorem[
+  $f(x)$ has a factor of degree one if and only if
+  $f(x)$ has a root in $F$, i.e.,
+  there is an $alpha in F$ such that $f(alpha) = 0$.
+]
+
+#theorem[
+  $f(x)$ has a root $alpha$ in $F$ if and only if
+  it has $(x - alpha)$ as a factor.
+]
+
+#theorem[
+  A polynomial of degree two or three over $F$ is reducible
+  if and only if it has a root in $F$.
+  
+  A polynomial of degree one is always irreducible.
 ]
 
 == ?
