@@ -23,7 +23,7 @@
   memes: true,
 )
 
-=== Excercises
+==== Excercises
 
 #image("assets/image.png")
 
@@ -1616,6 +1616,63 @@ Assume $R$ is commutative.
   + Every maximal ideal of $R$ is prime.
 ]
 
+== Primes
+
+#definition[
+  Let $R$ be an integral domain.
+
+  A nonzero, nonunit element $r in R$ is *irreducible*
+  if whenever $r = a b$ for $a, b in R$, either $a$ or $b$ is a unit in $R$.
+  Otherwise, it is *reducible*.
+
+  A nonzero, nonunit element $p in R$ is *prime*
+  if whenever $p | a b$ for $a, b in R$, then $p | a$ or $p | b$.
+  In other words, if it cannot be factored into a product of two nonunits.
+
+  Two elements $a, b in R$ are *associated* (or *associates*)
+  if $a | b$ and $b | a$,
+  which in an integral domain is equivalent to $a = u b$
+  for some unit $u in R$.
+]
+
+#theorem[
+  In an integral domain, every prime element is irreducible.
+]
+
+#proof[
+  Suppose $(p)$ is a nonzero prime ideal and $p = a b$.
+  Then $a b in (p)$ so, by definition of prime ideal, one of $a$ or $b$,
+  say $a$, is in $(p)$. Thus, $a = p r$ for some $r$.
+  This implies $p = a b = p r b$ so $r b = 1$ and $b$ is a unit.
+]
+
+#theorem[
+  In a Unique Factorization Domain,
+  a nonzero element is prime if and only if it is irreducible.
+]
+
+#theorem[
+  Let $R$ be a commutative ring.
+  If $a, b in R$ are nonzero elements which generate a principal ideal
+  $(a, b) = (d)$, then $d$ is a greatest common divider of $a$ and $b$.
+]
+
+Let $R$ be a Principal Ideal Domain.
+
+#theorem[Bézout's identity][
+  If $a, b in R$, then any greatest common divisor $d = gcd(a, b)$ satisfies
+  $ a x + b y = d quad "for some" x, y in R. $
+]
+
+#definition[Coprime][
+  Two elements are *coprime* if all their common factors are units.
+]
+
+#corollary[
+  Two elements $a, b in R$ are coprime if and only if
+  $ a x + b y = 1 quad "for some" x, y in R. $
+]
+
 == Polynomial Rings
 
 #definition[Reducible polynomial][
@@ -1692,63 +1749,6 @@ Let $f(x) = a_n x^n + dots.h.c + a_1 x + a_0 in F[x]$.
   if and only if it has a root in $F$.
   
   A polynomial of degree one is always irreducible.
-]
-
-== ?
-
-#definition[
-  Let $R$ be an integral domain.
-
-  A non-zero, non-unit element $r in R$ is *irreducible*
-  if whenever $r = a b$ for $a, b in R$, either $a$ or $b$ is a unit in $R$.
-  Otherwise, it is *reducible*.
-
-  A non-zero, non-unit element $p in R$ is *prime*
-  if whenever $p | a b$ for $a, b in R$, then $p | a$ or $p | b$.
-  In other words, if it cannot be factored into a product of two nonunits.
-
-  Two elements $a, b in R$ are *associated* (or *associates*)
-  if $a | b$ and $b | a$,
-  which in an integral domain is equivalent to $a = u b$
-  for some unit $u in R$.
-]
-
-#theorem[
-  In an integral domain, every prime element is irreducible.
-]
-
-#proof[
-  Suppose $(p)$ is a nonzero prime ideal and $p = a b$.
-  Then $a b in (p)$ so, by definition of prime ideal, one of $a$ or $b$,
-  say $a$, is in $(p)$. Thus, $a = p r$ for some $r$.
-  This implies $p = a b = p r b$ so $r b = 1$ and $b$ is a unit.
-]
-
-#theorem[
-  In a Unique Factorization Domain,
-  a nonzero element is prime if and only if it is irreducible.
-]
-
-#theorem[
-  Let $R$ be a commutative ring.
-  If $a, b in R$ are nonzero elements which generate a principal ideal
-  $(a, b) = (d)$, then $d$ is a greatest common divider of $a$ and $b$.
-]
-
-Let $R$ be a Principal Ideal Domain.
-
-#theorem[Bézout's identity][
-  If $a, b in R$, then any greatest common divisor $d = gcd(a, b)$ satisfies
-  $ a x + b y = d quad "for some" x, y in R. $
-]
-
-#definition[Coprime][
-  Two elements are *coprime* if all their common factors are units.
-]
-
-#corollary[
-  Two elements $a, b in R$ are coprime if and only if
-  $ a x + b y = 1 quad "for some" x, y in R. $
 ]
 
 = Fields
